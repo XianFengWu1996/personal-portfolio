@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Electrolize } from '@next/font/google';
-import NavBar from '@/components/NavBar';
+import NavBar from '@/components/Navbar/NavBar';
 
 const electrolize = Electrolize({
   weight: ['400'],
