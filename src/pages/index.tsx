@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Electrolize } from '@next/font/google';
 import NavBar from '@/components/Navbar/NavBar';
+import Main from '@/components/Main/Main';
 
 const electrolize = Electrolize({
   weight: ['400'],
@@ -21,6 +22,7 @@ export default function Home() {
         className={`${electrolize.className} w-full h-screen bg-gray-900 text-white`}
       >
         <NavBar />
+        <Main />
       </main>
     </>
   );
