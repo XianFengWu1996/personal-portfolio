@@ -4,6 +4,7 @@ const Main = () => {
       <div className="flex flex-col items-start">
         <h1 className="text-6xl my-3">
           Hi, my name is <span className="text-[#66FCF1]">Shawn</span>
+          <span className="flash">_</span>
         </h1>
         <h2 className="text-2xl">Full-Stack Web Developer.</h2>
         <h2 className="text-2xl">Also a passionate rookie game developer.</h2>
