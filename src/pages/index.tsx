@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Electrolize } from '@next/font/google';
 import NavBar from '@/components/Navbar/NavBar';
 import Main from '@/components/Main/Main';
+import Technology from '@/components/Technology/Technology';
 
 const electrolize = Electrolize({
   weight: ['400'],
@@ -23,6 +24,7 @@ export default function Home() {
       >
         <NavBar />
         <Main />
+        <Technology />
       </main>
     </>
   );

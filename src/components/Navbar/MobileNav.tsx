@@ -42,7 +42,7 @@ const MobileNav = (props: MobileNavProps) => {
 
           {/* Navigation  */}
           <ul className="w-full h-[125px] flex flex-col justify-between uppercase cursor-pointer px-2">
-            <Link href={'/'}>Technologies</Link>
+            <Link href={'/'}>Expertise</Link>
             <Link href={'/'}>Projects</Link>
             <Link href={'/'}>About Me</Link>
           </ul>

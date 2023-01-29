@@ -21,7 +21,7 @@ const DesktopNav = (props: DesktopNavProps) => {
         {/* navigation buttons */}
         <div className="hidden md:flex">
           <ul className=" w-[400px] flex justify-between uppercase cursor-pointer">
-            <Link href={'/'}>Technologies</Link>
+            <Link href={'/'}>Expertise</Link>
             <Link href={'/'}>Projects</Link>
             <Link href={'/'}>About Me</Link>
           </ul>
