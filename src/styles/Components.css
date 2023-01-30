@@ -26,3 +26,17 @@
     opacity: 0;
   }
 }
+
+.nav-down {
+  animation: upDown 1s linear infinite;
+}
+
+@keyframes upDown {
+  50% {
+    transform: translateY(-10px);
+  }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+}

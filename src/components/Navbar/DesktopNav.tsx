@@ -12,7 +12,7 @@ interface DesktopNavProps {
 const DesktopNav = (props: DesktopNavProps) => {
   return (
     <div>
-      <div className="fixed w-full h-20 flex justify-between items-center py-5 px-3 sm:px-5 md:px-7 lg:px-10 border-b border-gray-800">
+      <div className="fixed w-full h-20 flex justify-between items-center py-5 px-3 sm:px-5 md:px-7 lg:px-10 border-b border-gray-800 z-[100] bg-gray-900">
         {/* logo image */}
         <div>
           <Image src={WhiteLogo} alt="Logo Image" height={75} width={75} />

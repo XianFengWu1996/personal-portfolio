@@ -14,7 +14,7 @@ const MobileNav = (props: MobileNavProps) => {
     <div
       className={
         props.isOpen
-          ? 'md:hidden fixed top-0 left-0 w-full h-screen bg-white/40'
+          ? 'md:hidden fixed top-0 left-0 w-full h-screen bg-white/40 z-[100]'
           : ''
       }
     >
