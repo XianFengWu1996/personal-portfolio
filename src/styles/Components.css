@@ -2,6 +2,7 @@
   font-size: 40px;
   position: relative;
   z-index: 1;
+  display: block;
 }
 
 .title::after {
