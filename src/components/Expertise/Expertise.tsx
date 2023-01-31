@@ -1,91 +1,65 @@
-const expertise = {
-  frontEnd: [
-    {
-      name: 'HTML',
-    },
-  ],
-};
+import { IoTriangleOutline } from 'react-icons/io5';
+import { data, packages } from './data';
 
 const Expertise = () => {
   return (
-    <div className="w-full min-h-full bg-inherit p-24 flex flex-col justify-start items-center">
-      <h1 className="title mb-10">Expertise</h1>
+    <div className="w-full h-full bg-gray-800 px-16 py-10">
+      <div className="flex justify-center items-center">
+        <h1 className="title mb-6">Expertise</h1>
+      </div>
 
-      {/* version 1 */}
-      {/* <div className="grid sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-4 grid-flow-row gap-4 lg:gap-0 w-full">
-        <div className="p-4 min-h-[250px] border-2 lg:border-r-0  flex flex-col">
-          <div className="flex items-center">
-            <FaReact size={30} />
-            <p className="mx-2 text-2xl">Frontend</p>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {data.map((d, i) => {
+          return (
+            <div key={i} className="flex flex-col items-center justify-start">
+              <div>
+                <d.Icon size={25} />
+              </div>
+              <h1 className="my-2">{d.name}</h1>
+
+              <ul>
+                {d.skills.map((s, index) => {
+                  return (
+                    <div key={index} className="flex items-center">
+                      <IoTriangleOutline
+                        size={8}
+                        className="rotate-90 text-[#66fcf1]"
+                      />
+                      <li className="pl-2">{s}</li>
+                    </div>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* outter grid */}
+      <div className="grid grid-cols-1 mt-4">
+        {/* to layout the header and content vertically */}
+        <div className="flex flex-col items-center">
+          {/* header */}
+          <div>
+            <packages.Icon size={25} />
           </div>
-          <ul>
-            <li className="flex items-center">
-              <GiSpiderWeb size={12} />
-              <p className="px-2">HTML</p>
-            </li>
-            <li className="flex items-center">
-              <GiSpiderWeb size={12} />
-              <p className="px-2">CSS</p>
-            </li>
-            <li className="flex items-center">
-              <GiSpiderWeb size={12} />
-              <p className="px-2">Javascript</p>
-            </li>
-            <li className="flex items-center">
-              <GiSpiderWeb size={12} />
-              <p className="px-2">HTML</p>
-            </li>
-          </ul>
-        </div>
-        <div className="p-4 min-h-[250px] border-2  flex flex-col">
-          <div className="flex items-center">
-            <FiServer size={30} />
-            <p className="mx-2 text-2xl">Backend</p>
+          <h1 className="my-2">{packages.name}</h1>
+          {/* content */}
+          <div className="grid grid-cols-3 w-full">
+            {packages.skills.map((s, i) => {
+              return (
+                <div key={i} className="flex justify-center items-center">
+                  <IoTriangleOutline
+                    size={8}
+                    className="rotate-90 text-[#66fcf1]"
+                  />
+                  <div className="pl-2">{s}</div>
+                </div>
+              );
+            })}
           </div>
-
-          <ul>
-            <BiGame size={8} />
-          </ul>
         </div>
-        <div className="p-4 min-h-[250px] border-2  lg:border-l-0  flex flex-col">
-          <div className="flex items-center">
-            <CiMobile3 size={30} />
-            <p className="mx-2 text-2xl">Mobile</p>
-          </div>
-
-          <ul>
-            <BiGame size={8} />
-          </ul>
-        </div>
-
-        <div className="p-4 min-h-[250px] border-2  lg:border-l-0  flex flex-col">
-          <div className="flex items-center">
-            <IoGameControllerOutline size={30} />
-            <p className="mx-2 text-2xl">Gaming</p>
-          </div>
-
-          <ul className="flex flex-col justify-start">
-            <li className="flex items-center">
-              <BiGame size={12} />
-              <p className="px-2">Unity</p>
-            </li>
-            <li className="flex items-center">
-              <BiGame size={12} />
-              <p className="px-2">C#</p>
-            </li>
-            <li className="flex items-center">
-              <BiGame size={12} />
-              <p className="px-2">Unreal Engine</p>
-            </li>
-            <li className="flex items-center">
-              <BiGame size={12} />
-              <p className="px-2">C++</p>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-
-      {/* version 2 */}
+      </div>
     </div>
   );
 };

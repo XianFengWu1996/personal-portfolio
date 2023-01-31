@@ -2,7 +2,7 @@
   font-size: 40px;
   position: relative;
   z-index: 1;
-  display: block;
+  width: fit-content;
 }
 
 .title::after {
@@ -41,3 +41,39 @@
     transform: translateY(0px);
   }
 }
+
+.tab-button {
+  position: relative;
+  /* margin: 10px 20px; */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  border-left-color: gray;
+  border-left-width: 2px;
+}
+
+/* .bar::before {
+  content: '';
+  height: 100%;
+  width: 2px;
+  position: absolute;
+  left: 0px;
+  background-color: gray;
+  z-index: 9999;
+  opacity: 0.9;
+}
+
+.selected {
+  color: #66fcf1;
+  background-color: rgb(0, 0, 35, 0.5);
+}
+
+.selected::before {
+  content: '';
+
+  background-color: #66fcf1;
+  z-index: 9999;
+  opacity: 0.9;
+  transition: all 1s;
+} */
