@@ -53,6 +53,17 @@
   border-left-width: 2px;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #66fcf285;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
 .image-clip {
   position: absolute;
   clip-path: polygon(0% 0%, 50% 0%, 0% 50%, 0% 50%) !important;

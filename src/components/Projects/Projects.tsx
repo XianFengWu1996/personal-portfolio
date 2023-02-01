@@ -8,7 +8,28 @@ const Projects = () => {
       {/* project 1 */}
       <div className="bg-slate-300 w-full">
         {/* image */}
-        <div className="w-[55%] h-[375px] bg-red-50 relative image-container">
+        <div
+          className="w-[55%] h-[375px] relative image-container"
+          onMouseEnter={(e) => {
+            const image = e.currentTarget;
+
+            const overlay = image.querySelector('.overlay');
+
+            if (!overlay) return;
+
+            overlay.setAttribute('style', 'opacity: 0; z-index:-1');
+          }}
+          onMouseLeave={(e) => {
+            const image = e.currentTarget;
+
+            const overlay = image.querySelector('.overlay');
+
+            if (!overlay) return;
+
+            overlay.setAttribute('style', 'opacity: 1');
+          }}
+        >
+          <div className="overlay"></div>
           <Image
             className="image-clip"
             src="/assets/images/projects/tc-home.png"
