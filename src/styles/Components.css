@@ -53,27 +53,17 @@
   border-left-width: 2px;
 }
 
-/* .bar::before {
-  content: '';
-  height: 100%;
-  width: 2px;
+.image-clip {
   position: absolute;
-  left: 0px;
-  background-color: gray;
-  z-index: 9999;
-  opacity: 0.9;
+  clip-path: polygon(0% 0%, 50% 0%, 0% 50%, 0% 50%) !important;
+  z-index: 1;
+  transition: clip-path 1s;
 }
 
-.selected {
-  color: #66fcf1;
-  background-color: rgb(0, 0, 35, 0.5);
+.image-clip:hover {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important;
 }
 
-.selected::before {
-  content: '';
-
-  background-color: #66fcf1;
-  z-index: 9999;
-  opacity: 0.9;
-  transition: all 1s;
-} */
+.image-below {
+  position: absolute;
+}
