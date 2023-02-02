@@ -5,48 +5,93 @@ import { projectData } from './data';
 
 const Projects = () => {
   return (
-    <div className="w-full h-full bg-inherit  px-16 py-10">
+    <div className="w-full bg-inherit  px-16 py-10">
       <h1 className="title mx-auto my-5">Projects</h1>
 
       {projectData.map((project, index) => {
         return (
           <div
             key={index}
-            className="w-[80%] mt-10 mb-36  mx-auto relative flex justify-end"
+            className={`w-[80%] mt-10 mb-36  mx-auto relative flex ${
+              project.alignImageLeft ? 'justify-end' : 'justify-start'
+            } `}
           >
             <div className="z-10">
-              <h1 className="text-end text-2xl my-3 text-[#66fcf1]">
+              <h1
+                className={`${
+                  project.alignImageLeft ? 'text-end' : 'text-start'
+                } text-2xl my-3 text-[#66fcf1]`}
+              >
                 {project.name}
               </h1>
-              <div className="bg-[#061f32] w-[475px] h-[150px] shadow-lg z-10 text-end p-4 text-[15px]">
+              <div
+                className={`bg-[#061f32] w-[475px] h-[150px] shadow-lg z-10 p-4 text-[15px] ${
+                  project.alignImageLeft ? 'text-end' : 'text-start'
+                }`}
+              >
                 {project.content}
               </div>
               <div>
                 {project.frontend.length > 0 && (
                   <div className="my-2">
-                    <h1 className="text-end text-[#66fcf1]">Frontend</h1>
-                    <ul className="flex text-sm justify-end">
-                      <li className="ml-2">NextJS</li>
-                      <li className="ml-2">Typescript</li>
-                      <li className="ml-2">Redux</li>
-                      <li className="ml-2">Material UI</li>
-                      <li className="ml-2">Firebase</li>
+                    <h1
+                      className={`${
+                        project.alignImageLeft ? 'text-end' : 'text-start'
+                      } text-[#66fcf1]`}
+                    >
+                      Frontend
+                    </h1>
+                    <ul
+                      className={`flex text-sm ${
+                        project.alignImageLeft ? 'justify-end' : 'justify-start'
+                      }`}
+                    >
+                      {project.frontend.map((pro, i) => {
+                        return (
+                          <li
+                            key={i}
+                            className={project.alignImageLeft ? 'ml-2' : 'mr-2'}
+                          >
+                            {' '}
+                            {pro}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}
                 {project.backend.length > 0 && (
                   <div className="my-2">
-                    <h1 className="text-end text-[#66fcf1]">Backend</h1>
-                    <ul className="flex text-sm justify-end">
-                      <li className="ml-2">Node </li>
-                      <li className="ml-2">Express</li>
-                      <li className="ml-2">Firebase Admin</li>
-                      <li className="ml-2">Cloud Function</li>
-                      <li className="ml-2">Nodemailer</li>
+                    <h1
+                      className={`${
+                        project.alignImageLeft ? 'text-end' : 'text-start'
+                      } text-[#66fcf1]`}
+                    >
+                      Backend
+                    </h1>
+                    <ul
+                      className={`flex text-sm ${
+                        project.alignImageLeft ? 'justify-end' : 'justify-start'
+                      }`}
+                    >
+                      {project.backend.map((pro, i) => {
+                        return (
+                          <li
+                            key={i}
+                            className={project.alignImageLeft ? 'ml-2' : 'mr-2'}
+                          >
+                            {pro}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}
-                <div className="flex justify-end">
+                <div
+                  className={`flex ${
+                    project.alignImageLeft ? 'justify-end' : 'justify-start'
+                  }`}
+                >
                   <button className="text-[#66fcf1]">
                     <FiGithub size={22} />
                   </button>
@@ -59,7 +104,9 @@ const Projects = () => {
 
             {/* image */}
             <div
-              className={`w-[60%] h-[375px] absolute ${project.imageAlignment}-0 image-container`}
+              className={`w-[60%] h-[375px] absolute ${
+                project.alignImageLeft ? 'left-0' : 'right-0'
+              } image-container`}
               onMouseEnter={(e) => {
                 const image = e.currentTarget;
 
