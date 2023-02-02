@@ -59,9 +59,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #66fcf285;
+  background-color: #03ada2d4;
   z-index: 2;
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 
 .image-clip {
