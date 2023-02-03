@@ -3,7 +3,7 @@ import { data, packages } from './data';
 
 const Expertise = () => {
   return (
-    <div className="w-full h-full bg-gray-800 px-16 py-10">
+    <div className="w-full h-full bg-inherit px-16 py-10">
       <div className="flex justify-center items-center">
         <h1 className="title mb-6">Expertise</h1>
       </div>
@@ -36,7 +36,7 @@ const Expertise = () => {
       </div>
 
       {/* outter grid */}
-      <div className="grid grid-cols-1 mt-4">
+      <div className="grid grid-cols-1 mt-10">
         {/* to layout the header and content vertically */}
         <div className="flex flex-col items-center">
           {/* header */}

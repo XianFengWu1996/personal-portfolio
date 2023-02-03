@@ -13,7 +13,7 @@ const Projects = () => {
         return (
           <div
             key={index}
-            className={`w-[80%] mt-10 mb-36  mx-auto relative flex ${
+            className={`w-[80%] mt-20 mb-44  mx-auto relative flex ${
               project.alignImageLeft ? 'justify-end' : 'justify-start'
             } `}
           >
