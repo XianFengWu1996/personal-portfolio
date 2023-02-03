@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaLaptopCode } from 'react-icons/fa';
 import { FiGithub } from 'react-icons/fi';
 import { projectData } from './data';
@@ -93,11 +94,17 @@ const Projects = () => {
                   }`}
                 >
                   <button className="text-[#66fcf1]">
-                    <FiGithub size={22} />
+                    <Link href={project.github} target="_blank">
+                      <FiGithub size={22} />
+                    </Link>
                   </button>
-                  <button className="text-[#66fcf1] ml-2">
-                    <FaLaptopCode size={22} />
-                  </button>
+                  {project.demoUrl && (
+                    <button className="text-[#66fcf1] ml-2">
+                      <Link href={project.demoUrl} target="_blank">
+                        <FaLaptopCode size={22} />
+                      </Link>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

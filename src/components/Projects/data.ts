@@ -33,8 +33,8 @@ export const projectData: ProjectData[] = [
     image: TCV2,
     clipImage: TCHOME,
     alignImageLeft: true,
-    github: '',
-    demoUrl: '',
+    github: 'https://github.com/XianFengWu1996/tc_demo_v2',
+    demoUrl: 'https://tc-demo-v2.vercel.app',
   },
   // Project 2
   {
@@ -52,8 +52,8 @@ export const projectData: ProjectData[] = [
     image: TCV1,
     clipImage: TCHOME,
     alignImageLeft: false,
-    github: '',
-    demoUrl: '',
+    github: 'https://github.com/XianFengWu1996/taipeicuisine_nextjs',
+    demoUrl: 'https://tc-demo-v1.vercel.app',
   },
   {
     name: 'Portfolio',
@@ -63,6 +63,6 @@ export const projectData: ProjectData[] = [
     backend: [],
     image: MYPORTFOLIO,
     alignImageLeft: true,
-    github: '',
+    github: 'https://github.com/XianFengWu1996/personal-portfolio',
   },
 ];
