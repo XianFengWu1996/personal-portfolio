@@ -6,6 +6,7 @@ import Expertise from '@/components/Expertise/Expertise';
 import Projects from '@/components/Projects/Projects';
 import AboutMe from '@/components/AboutMe/AboutMe';
 import Contact from '@/components/Contact/Contact';
+import Footer from '@/components/Footer/Footer';
 
 const electrolize = Electrolize({
   weight: ['400'],
@@ -31,6 +32,7 @@ export default function Home() {
         <Projects />
         <AboutMe />
         <Contact />
+        <Footer />
       </main>
     </>
   );
