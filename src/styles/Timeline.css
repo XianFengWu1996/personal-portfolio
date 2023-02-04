@@ -16,20 +16,29 @@
   animation: moveLine 5s linear forwards;
 }
 
-@keyframes moveLine {
-  0% {
-    height: 0;
-  }
-
-  100% {
-    height: 100%;
-  }
-}
-
 .container {
   padding: 10px 30px;
   position: relative;
   width: 50%;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border: 4px solid #66fcf1;
+  top: 50%;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.container.left::after {
+  right: -10px;
+}
+.container.right::after {
+  left: -9px;
 }
 
 .text-box {
@@ -47,4 +56,15 @@
 .right {
   left: 50%;
   text-align: start;
+}
+
+/* animations */
+@keyframes moveLine {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 100%;
+  }
 }
