@@ -1,0 +1,56 @@
+#outer {
+  stroke-dasharray: 178px;
+  stroke-dashoffset: 178px;
+  animation: animateOuter 5s ease-out forwards infinite;
+}
+
+@keyframes animateOuter {
+  0%,
+  80% {
+    stroke-dashoffset: 178px;
+  }
+
+  20%,
+  30%,
+  40%,
+  50%,
+  60% {
+    stroke-dashoffset: 0px;
+  }
+}
+
+#arrow {
+  opacity: 0;
+  animation: updown 1s ease-in forwards infinite,
+    animateArrow 5s ease-in-out forwards infinite;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes animateArrow {
+  0%,
+  10%,
+  80%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70% {
+    opacity: 1;
+  }
+}

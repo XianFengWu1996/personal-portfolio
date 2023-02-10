@@ -1,4 +1,3 @@
-import { HiOutlineMapPin } from 'react-icons/hi2';
 import { TimelineData } from './data';
 
 const AboutMe = () => {
@@ -11,11 +10,7 @@ const AboutMe = () => {
         <div className="timeline">
           {TimelineData.map((timeline, i) => {
             return (
-              <div
-                data-background-icon={HiOutlineMapPin}
-                className={`container ${timeline.alignment}`}
-                key={i}
-              >
+              <div className={`container ${timeline.alignment}`} key={i}>
                 <div className="text-box">
                   <h2 className="text-[#66fcf1] capitalize text-lg">
                     {timeline.title}
