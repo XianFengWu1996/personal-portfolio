@@ -25,7 +25,7 @@ const MobileNav = (props: MobileNavProps) => {
             : 'md:hidden fixed left-[-100%] w-[75%] bg-gray-900 h-full ease-in duration-300'
         }
       >
-        <div className="flex flex-col justify-between h-[75%] w-full">
+        <div className="flex flex-col justify-between h-[90%] w-full">
           {/* Logo and Close button  */}
           <div className="flex justify-between items-center ">
             <div>
@@ -46,6 +46,10 @@ const MobileNav = (props: MobileNavProps) => {
             <Link href={'/'}>Projects</Link>
             <Link href={'/'}>About Me</Link>
           </ul>
+
+          <button className="border-[#66fcf1] rounded-lg border-2 px-4 py-1 w-[50%]">
+            Resume
+          </button>
 
           {/* Social  */}
           <SocialIcons />

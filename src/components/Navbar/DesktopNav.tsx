@@ -20,10 +20,13 @@ const DesktopNav = (props: DesktopNavProps) => {
 
         {/* navigation buttons */}
         <div className="hidden md:flex">
-          <ul className=" w-[400px] flex justify-between uppercase cursor-pointer">
+          <ul className=" w-[400px] flex justify-between uppercase cursor-pointer items-center">
             <Link href={'/'}>Expertise</Link>
             <Link href={'/'}>Projects</Link>
             <Link href={'/'}>About Me</Link>
+            <button className="border-[#66fcf1] rounded-lg border-2 px-4 py-1">
+              Resume
+            </button>
           </ul>
         </div>
 
