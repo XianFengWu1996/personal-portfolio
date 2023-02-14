@@ -3,7 +3,10 @@ import DownNavButton from './DownNavButton';
 const Main = () => {
   return (
     <div>
-      <div className="w-full h-screen flex justify-center items-center text-left relative">
+      <main
+        id="hero"
+        className="w-full h-screen flex justify-center items-center text-left relative"
+      >
         <div className="flex flex-col items-start ">
           <h1 className="text-6xl my-3">
             Hi, my name is <span className="text-[#66FCF1]">Shawn</span>
@@ -17,7 +20,7 @@ const Main = () => {
 
           <DownNavButton />
         </div>
-      </div>
+      </main>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 
 const Contact = () => {
   return (
-    <div className="bg-inherit w-full py-20">
+    <div className=" w-full py-20">
       <h1 className="title mx-auto">Get in Touch</h1>
       <div className="w-[35%] mx-auto my-16 text-center text-lg">
         <p>

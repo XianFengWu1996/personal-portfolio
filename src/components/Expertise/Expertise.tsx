@@ -1,10 +1,24 @@
+import { useEffect, useRef, useState } from 'react';
 import { IoTriangleOutline } from 'react-icons/io5';
 import { data, packages } from './data';
 
 const Expertise = () => {
+  const ref = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setIsVisible(entry.isIntersecting);
+      console.log(entry);
+    });
+
+    if (ref.current) observer.observe(ref.current);
+  }, []);
+
   return (
-    <div className="w-full h-full bg-inherit px-16 py-10">
-      <div className="flex justify-center items-center">
+    <section ref={ref} id="expertise" className="w-full h-full my-16">
+      <div className="flex justify-center items-center px-16 py-10">
         <h1 className="title mb-6">Expertise</h1>
       </div>
 
@@ -60,7 +74,7 @@ const Expertise = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

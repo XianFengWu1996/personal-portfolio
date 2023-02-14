@@ -2,11 +2,11 @@ import { TimelineData } from './data';
 
 const AboutMe = () => {
   return (
-    <div className="min-h-full bg-inherit">
+    <div className="min-h-full ">
       <h1 className="title mx-auto">About Me</h1>
 
       {/* content */}
-      <div className="w-full bg-inherit  px-16 py-10">
+      <div className="w-full   px-16 py-10">
         <div className="timeline">
           {TimelineData.map((timeline, i) => {
             return (

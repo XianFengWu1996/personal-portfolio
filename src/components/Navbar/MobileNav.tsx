@@ -21,8 +21,8 @@ const MobileNav = (props: MobileNavProps) => {
       <div
         className={
           props.isOpen
-            ? 'md:hidden fixed top-0 left-0 w-[75%] bg-gray-900 h-full z-[999] ease-in duration-300 py-4 px-6'
-            : 'md:hidden fixed left-[-100%] w-[75%] bg-gray-900 h-full ease-in duration-300'
+            ? 'md:hidden fixed top-0 left-0 w-[75%] h-full z-[999] ease-in duration-300 py-4 px-6 bg-gray-900'
+            : 'md:hidden fixed left-[-100%] w-[75%] h-full ease-in duration-300 bg-gray-900'
         }
       >
         <div className="flex flex-col justify-between h-[90%] w-full">

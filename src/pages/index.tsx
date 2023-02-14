@@ -23,9 +23,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main
-        className={`${electrolize.className} w-full h-screen bg-gray-900 text-white`}
-      >
+      <main className={`${electrolize.className} w-full h-screen text-white`}>
         <NavBar />
         <Main />
         <Expertise />
