@@ -8,7 +8,7 @@ const Main = () => {
         className="w-full h-screen flex justify-center items-center text-left relative"
       >
         <div className="flex flex-col items-start ">
-          <h1 className="text-6xl my-3">
+          <h1 id="main__title" className="text-6xl my-3">
             Hi, my name is <span className="text-[#66FCF1]">Shawn</span>
           </h1>
           <h2 className="text-2xl">Full-Stack Web Developer.</h2>
