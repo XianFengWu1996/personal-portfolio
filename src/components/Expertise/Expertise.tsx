@@ -1,31 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { IoTriangleOutline } from 'react-icons/io5';
 import { data, packages } from './data';
 
 const Expertise = () => {
-  const ref = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setIsVisible(entry.isIntersecting);
-      console.log(entry);
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('show', entry.isIntersecting);
+      });
     });
 
-    if (ref.current) observer.observe(ref.current);
+    const leftItems = document.querySelectorAll('.slide--left-hide');
+    const rightItems = document.querySelectorAll('.slide--right-hide');
+
+    leftItems.forEach((item) => observer.observe(item));
+    rightItems.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <section ref={ref} id="expertise" className="w-full h-full my-16">
+    <section id="expertise" className="w-full h-full my-16">
       <div className="flex justify-center items-center px-16 py-10">
         <h1 className="title mb-6">Expertise</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="flex justify-around items-start">
         {data.map((d, i) => {
           return (
-            <div key={i} className="flex flex-col items-center justify-start">
+            <div
+              key={i}
+              className="slide--left-hide expertise--item flex flex-col items-center justify-start"
+            >
               <div>
                 <d.Icon size={25} />
               </div>
@@ -50,7 +58,7 @@ const Expertise = () => {
       </div>
 
       {/* outter grid */}
-      <div className="grid grid-cols-1 mt-10">
+      <div className="slide--right-hide mt-10">
         {/* to layout the header and content vertically */}
         <div className="flex flex-col items-center">
           {/* header */}
