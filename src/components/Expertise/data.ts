@@ -4,13 +4,13 @@ import { FaNpm } from 'react-icons/fa';
 import { HiOutlineDevicePhoneMobile } from 'react-icons/hi2';
 import { IoGameControllerOutline } from 'react-icons/io5';
 
-interface Data {
+export interface Expertise {
   name: string;
   Icon: IconType;
   skills: string[];
 }
 
-export const data: Data[] = [
+export const Expertises: Expertise[] = [
   {
     name: 'Web Development',
     Icon: CgBrowser,
@@ -37,7 +37,7 @@ export const data: Data[] = [
   },
 ];
 
-export const packages: Data = {
+export const packages: Expertise = {
   name: 'Packages, API & Other Languages',
   Icon: FaNpm,
   skills: [
