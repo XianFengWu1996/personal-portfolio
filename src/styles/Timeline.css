@@ -16,13 +16,13 @@
   animation: moveLine 5s linear forwards;
 }
 
-.container {
+.timeline-container {
   padding: 10px 30px;
   position: relative;
   width: 50%;
 }
 
-.container::after {
+.timeline-container::after {
   content: '';
   position: absolute;
   width: 18px;
@@ -34,10 +34,10 @@
   z-index: 2;
 }
 
-.container.left::after {
+.timeline-container.left::after {
   right: -10px;
 }
-.container.right::after {
+.timeline-container.right::after {
   left: -9px;
 }
 

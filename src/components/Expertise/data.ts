@@ -17,7 +17,7 @@ export const data: Data[] = [
     skills: [
       'HTML',
       'CSS',
-      'Javascript(ES6)',
+      'Javascript',
       'Typescript',
       'NodeJS',
       'Express',
@@ -28,18 +28,12 @@ export const data: Data[] = [
   {
     name: 'Mobile Development',
     Icon: HiOutlineDevicePhoneMobile,
-    skills: [
-      'Flutter',
-      'Dart',
-      'React Native',
-      'Swift(in progress)',
-      'Android(in progress)',
-    ],
+    skills: ['Flutter', 'Dart', 'React Native'],
   },
   {
     name: 'Game Development',
     Icon: IoGameControllerOutline,
-    skills: ['Unity', 'Unreal Engine', 'Love2D', 'C#', 'C++', 'Lua'],
+    skills: ['Unity', 'Unreal Engine', 'C#', 'C++'],
   },
 ];
 

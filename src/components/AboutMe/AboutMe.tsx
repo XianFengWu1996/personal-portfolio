@@ -10,7 +10,10 @@ const AboutMe = () => {
         <div className="timeline">
           {TimelineData.map((timeline, i) => {
             return (
-              <div className={`container ${timeline.alignment}`} key={i}>
+              <div
+                className={`timeline-container ${timeline.alignment}`}
+                key={i}
+              >
                 <div className="text-box">
                   <h2 className="text-[#66fcf1] capitalize text-lg">
                     {timeline.title}

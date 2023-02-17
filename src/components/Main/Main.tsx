@@ -5,7 +5,7 @@ const Main = () => {
     <div>
       <main
         id="hero"
-        className="w-full h-screen flex justify-center items-center text-left relative"
+        className="container h-screen flex justify-center items-center text-left relative"
       >
         <div className="flex flex-col items-start ">
           <h1 id="main__title" className="text-6xl my-3">
