@@ -22,10 +22,10 @@ export default function Home() {
         {/* <NavBar /> */}
         <Main />
         <Expertise />
-        {/* <Projects />
-        <AboutMe />
-        <Contact />
-        <Footer /> */}
+        {/* <Projects /> */}
+        {/* <AboutMe /> */}
+        {/* <Contact /> */}
+        {/* <Footer />  */}
       </main>
     </>
   );

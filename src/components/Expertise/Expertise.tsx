@@ -1,39 +1,28 @@
-import { useEffect } from 'react';
+import { useObserverToggleClass } from '@/hooks/useIntersectionObserver';
 import SectionHeader from '../SectionHeader';
 import { Expertises, packages } from './data';
 import ExpertiseList from './ExpertiseList';
 
 const Expertise = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        entry.target.classList.toggle('show', entry.isIntersecting);
-      });
-    });
-
-    const leftItems = document.querySelectorAll('.slide--left-hide');
-    const rightItems = document.querySelectorAll('.slide--right-hide');
-
-    leftItems.forEach((item) => observer.observe(item));
-    rightItems.forEach((item) => observer.observe(item));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  useObserverToggleClass({
+    classlist: ['.slide--left-hide', '.slide--right-hide'],
+    toggleClass: 'show',
+  });
 
   return (
     <section id="expertise" className="w-full h-full">
       <SectionHeader text="Expertise" />
 
+      {/* main skills */}
       <div className="flex flex-col md:flex-row md:justify-around lg:flex-col">
         <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:justify-around">
           {Expertises.map((Data, i) => {
             return (
               <div
                 key={i}
-                className={`slide--left-hide expertise--item flex flex-col items-center mb-10`}
+                className="slide--left-hide expertise--item flex flex-col items-center mb-10"
               >
+                {/* header */}
                 <Data.Icon size={25} className="text-[#66fcf1]" />
                 <h1 className="my-2 text-2xl tracking-wider ">{Data.name}</h1>
 
@@ -43,9 +32,8 @@ const Expertise = () => {
           })}
         </div>
 
-        {/* outter grid */}
+        {/* package */}
         <div className="slide--right-hide">
-          {/* to layout the header and content vertically */}
           <div className="flex flex-col items-center">
             {/* header */}
             <packages.Icon size={25} className="text-[#66fcf1]" />
