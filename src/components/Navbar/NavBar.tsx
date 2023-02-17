@@ -7,7 +7,6 @@ const NavBar = () => {
 
   const handleOpen = () => {
     setOpen(true);
-    console.log('clicked');
   };
 
   const handleClose = () => {

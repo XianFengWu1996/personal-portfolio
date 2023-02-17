@@ -6,7 +6,7 @@ interface ExpertiseItemProps {
 
 const ExpertiseItem = ({ skill }: ExpertiseItemProps) => {
   return (
-    <li className="flex justify-start items-center list-none">
+    <li className="flex justify-start items-center list-none lg:min-w-[200px]">
       <IoTriangleOutline className="rotate-90 text-[#66fcf1] text-[.6rem]" />
 
       <p className="pl-5 text-md tracking-wide">{skill}</p>
