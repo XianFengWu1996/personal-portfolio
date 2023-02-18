@@ -4,7 +4,7 @@ import TCV1 from '../../../public/assets/images/projects/tc-version1.png';
 import TCHOME from '../../../public/assets/images/projects/tc-home.png';
 import MYPORTFOLIO from '../../../public/assets/images/projects/portfolio.png';
 
-interface ProjectData {
+export interface ProjectData {
   name: string;
   content: string;
   frontend: string[];
