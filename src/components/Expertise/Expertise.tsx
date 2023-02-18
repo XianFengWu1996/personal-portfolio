@@ -10,7 +10,7 @@ const Expertise = () => {
   });
 
   return (
-    <section id="expertise" className="w-full h-full">
+    <section id="expertise" className="section">
       <SectionHeader text="Expertise" />
 
       {/* main skills */}

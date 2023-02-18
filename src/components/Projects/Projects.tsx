@@ -6,7 +6,7 @@ import { projectData } from './data';
 
 const Projects = () => {
   return (
-    <div className="w-full min-h-screen px-16 py-10">
+    <section className="section">
       <h1 className="title mx-auto my-5">Projects</h1>
 
       {projectData.map((project, index) => {
@@ -152,7 +152,7 @@ const Projects = () => {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 };
 
