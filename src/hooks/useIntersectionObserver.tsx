@@ -35,21 +35,24 @@ interface ClassArgs extends IntersectionObserverInit {
 }
 
 export const useObserverToggleClass = (a: ClassArgs) => {
-  const observerParams = {
-    root: a.root ?? null,
-    rootMargin: a.rootMargin ?? '0%',
-    threshold: a.threshold ?? 0,
-  };
-
   useEffect(() => {
+    const observerParams = {
+      root: a.root ?? null,
+      rootMargin: a.rootMargin ?? '0%',
+      threshold: a.threshold ?? 0,
+    };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        console.log(entry);
+        console.log(entry.target);
+        console.log(entry.isIntersecting);
         entry.target.classList.toggle(a.toggleClass, entry.isIntersecting);
       });
     }, observerParams);
 
     a.classlist.forEach((string) => {
       const items = document.querySelectorAll(string);
+      console.log(items);
 
       items.forEach((item) => {
         observer.observe(item);
