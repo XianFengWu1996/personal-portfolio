@@ -21,16 +21,14 @@ const MobileNav = (props: MobileNavProps) => {
       <div
         className={
           props.isOpen
-            ? 'md:hidden fixed top-0 left-0 w-[75%] h-full z-[999] ease-in duration-300 py-4 px-6 bg-gray-900'
+            ? 'md:hidden fixed top-0 left-0 w-[100%] sm:w-[65%] h-full z-[999] ease-in duration-300 py-4 bg-gray-900'
             : 'md:hidden fixed left-[-100%] w-[75%] h-full ease-in duration-300 bg-gray-900'
         }
       >
         <div className="flex flex-col justify-between h-[90%] w-full">
           {/* Logo and Close button  */}
-          <div className="flex justify-between items-center ">
-            <div>
-              <Image src={WhiteLogo} alt="Logo Image" height={75} width={75} />
-            </div>
+          <div className="flex justify-between items-center mx-6">
+            <Image src={WhiteLogo} alt="Logo Image" height={75} width={75} />
             {/* Close Icon */}
             <div
               className="hover:bg-gray-800 rounded-full cursor-pointer p-1"
@@ -41,13 +39,19 @@ const MobileNav = (props: MobileNavProps) => {
           </div>
 
           {/* Navigation  */}
-          <ul className="w-full h-[125px] flex flex-col justify-between uppercase cursor-pointer px-2">
-            <Link href={'/'}>Expertise</Link>
-            <Link href={'/'}>Projects</Link>
-            <Link href={'/'}>About Me</Link>
+          <ul className="w-full h-[125px] flex flex-col justify-between uppercase cursor-pointer">
+            <Link href={'/'} className="menu_item">
+              Expertise
+            </Link>
+            <Link href={'/'} className="menu_item">
+              Projects
+            </Link>
+            <Link href={'/'} className="menu_item">
+              About Me
+            </Link>
           </ul>
 
-          <button className="border-[#66fcf1] rounded-lg border-2 px-4 py-1 w-[50%]">
+          <button className="border-[#66fcf1] rounded-lg border-2 px-4 py-1 w-[50%] mx-6">
             Resume
           </button>
 

@@ -31,6 +31,20 @@
   z-index: -1;
 }
 
+.menu_item {
+  padding: 1rem 1.5rem;
+  float: left;
+
+  background: linear-gradient(to left, rgb(17 24 39) 50%, #96dcdca9 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+}
+
+.menu_item:hover {
+  background-position: left bottom;
+}
+
 .title {
   font-size: 40px;
   position: relative;
