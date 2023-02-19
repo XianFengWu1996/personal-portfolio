@@ -4,21 +4,20 @@ import { FiGithub } from 'react-icons/fi';
 
 interface Props {
   alignImageLeft: boolean;
-  github: string;
-  demoUrl?: string;
+  links: Project.Links;
 }
 
-const ProjectSocial = ({ alignImageLeft, github, demoUrl }: Props) => {
+const ProjectSocial = ({ alignImageLeft, links }: Props) => {
   return (
-    <div className={`flex ${alignImageLeft ? 'justify-end' : 'justify-start'}`}>
+    <div className={`flex`}>
       <button className="text-[#66fcf1]">
-        <Link href={github} target="_blank">
+        <Link href={links.github} target="_blank">
           <FiGithub size={22} />
         </Link>
       </button>
-      {demoUrl && (
-        <button className="text-[#66fcf1] ml-2">
-          <Link href={demoUrl} target="_blank">
+      {links.demoUrl && (
+        <button className="text-[#66fcf1] ml-4">
+          <Link href={links.demoUrl} target="_blank">
             <FaLaptopCode size={22} />
           </Link>
         </button>

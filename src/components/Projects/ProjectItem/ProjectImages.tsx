@@ -1,50 +1,20 @@
-import Image, { StaticImageData } from 'next/image';
-
 interface Props {
   alignImageLeft: boolean;
-  clipImage?: StaticImageData;
-  image: StaticImageData;
+  images: Project.Images;
 }
-const ProjectImages = ({ alignImageLeft, clipImage, image }: Props) => {
+const ProjectImages = ({ alignImageLeft, images }: Props) => {
   return (
-    <div
-      className={`w-[100%] h-[375px] absolute ${
-        alignImageLeft ? 'left-0' : 'right-0'
-      } image-container`}
-      onMouseEnter={(e) => {
-        const image = e.currentTarget;
+    <div>
+      <picture>
+        {/* for mobile screen  */}
+        <source srcSet={images.minified.src} media="(max-width: 600px)" />
 
-        const overlay = image.querySelector('.overlay');
-
-        if (!overlay) return;
-
-        overlay.setAttribute('style', 'opacity: 0; z-index:-1');
-      }}
-      onMouseLeave={(e) => {
-        const image = e.currentTarget;
-
-        const overlay = image.querySelector('.overlay');
-
-        if (!overlay) return;
-
-        overlay.setAttribute('style', 'opacity: 1');
-      }}
-    >
-      <div className="overlay"></div>
-      {clipImage && (
-        <Image
-          className="image-clip"
-          src={clipImage}
-          alt="project1 home page"
-          fill
+        <img
+          className="brightness-75"
+          src={images.original.src}
+          alt="project2 home page"
         />
-      )}
-      <Image
-        className="image-below"
-        src={image}
-        alt="project2 home page"
-        fill
-      />
+      </picture>
     </div>
   );
 };
