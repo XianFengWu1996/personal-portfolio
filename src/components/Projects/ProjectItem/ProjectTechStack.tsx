@@ -20,7 +20,7 @@ const ProjectTechStack = ({ list, alignImageLeft, text }: Props) => {
                 <li
                   key={i}
                   className={
-                    'mr-2 mb-2 inline-block bg-[#d5fdfa] rounded-full px-3 py-[0.3rem] text-gray-900 md:text-[0.8rem] lg:text-[0.65rem]'
+                    'mr-2 mb-2 inline-block bg-[#d5fdfa] rounded-full px-3 py-[0.3rem] text-gray-900 md:text-[0.8rem] lg:text-[0.65rem] slide--top-hide'
                   }
                 >
                   {pro}

@@ -6,7 +6,7 @@ import ExpertiseList from './ExpertiseList';
 const Expertise = () => {
   useObserverToggleClass({
     classlist: ['.slide--left-hide', '.slide--right-hide'],
-    toggleClass: 'show',
+    toggleClass: 'show-x',
   });
 
   return (

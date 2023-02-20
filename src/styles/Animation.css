@@ -12,7 +12,27 @@
   filter: blur(5px);
 }
 
-.show {
+.slide--top-hide {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  transform: translateY(-100%);
+  filter: blur(2px);
+}
+
+.slide--bottom-hide {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  transform: translateY(100%);
+  filter: blur(2px);
+}
+
+.show-x {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+.show-y {
   opacity: 1;
   transform: translateX(0);
   filter: blur(0);

@@ -5,7 +5,11 @@ interface Props {
 
 const ProjectName = ({ text, alignImageLeft }: Props) => {
   return (
-    <h1 className={'text-xl my-3 md:text-2xl lg:my-1 text-[#66fcf1]'}>
+    <h1
+      className={
+        'text-xl my-3 md:text-2xl lg:my-1 text-[#66fcf1] slide--top-hide'
+      }
+    >
       {text}
     </h1>
   );
