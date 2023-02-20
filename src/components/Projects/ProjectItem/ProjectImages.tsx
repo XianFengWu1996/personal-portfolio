@@ -10,7 +10,7 @@ const ProjectImages = ({ alignImageLeft, images }: Props) => {
         <source srcSet={images.minified.src} media="(max-width: 768px)" />
 
         <img
-          className="brightness-[.85] hover:brightness-100 transition-all"
+          className="brightness-[.85] h-[14rem] hover:brightness-100 transition-all object-fit w-full lg:h-[12rem]"
           src={images.original.src}
           alt="project2 home page"
         />

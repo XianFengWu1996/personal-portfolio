@@ -9,7 +9,7 @@ interface Props {
 
 const ProjectSocial = ({ alignImageLeft, links }: Props) => {
   return (
-    <div className={`flex`}>
+    <div className="flex">
       <button className="text-[#66fcf1]">
         <Link href={links.github} target="_blank">
           <FiGithub size={22} />

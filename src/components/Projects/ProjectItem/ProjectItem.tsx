@@ -10,7 +10,7 @@ interface Props {
 
 const ProjectItem = ({ project }: Props) => {
   return (
-    <div className="bg-gray-800/80 max-w-sm min-h-fit rounded overflow-hidden shadow-lg mb-14 md:max-w-lg">
+    <div className="bg-gray-800/80 max-w-sm rounded overflow-hidden shadow-lg mb-14 md:max-w-md mx-8 self-stretch lg:mx-auto">
       {/* Images */}
       <ProjectImages
         images={project.images}
