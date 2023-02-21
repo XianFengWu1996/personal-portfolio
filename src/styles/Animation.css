@@ -26,6 +26,21 @@
   filter: blur(2px);
 }
 
+.slideup--expand-hide {
+  opacity: 0.1;
+  scale: 0.5;
+  transform: translateX(100%);
+  filter: blur(2px);
+  transition: all 0.5s ease-in-out;
+}
+
+.show-expand {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+  scale: 1;
+}
+
 .show-x {
   opacity: 1;
   transform: translateX(0);

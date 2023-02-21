@@ -1,6 +1,7 @@
 import { useObserver } from '@/hooks/useIntersectionObserver';
 import { useEffect } from 'react';
 import { TimelineData } from './data';
+import TimelineItem from './TimelineItem';
 
 const AboutMe = () => {
   // the observer will monitor the whether or not the each element is in view or not
@@ -13,20 +14,22 @@ const AboutMe = () => {
       const containerHeight = container.clientHeight;
 
       entries.map((entry) => {
+        console.log(entry.isIntersecting);
         // variable that is different every iteration
         const elHeight = entry.target.clientHeight; // the height of the element
+
         // the current height of the timeline display line
         const lineEl = document.getElementById('timeline--line');
         if (!lineEl) return;
         let lineHeight = Number(lineEl.style.height.replace('px', ''));
 
         if (lineHeight < containerHeight && entry.isIntersecting) {
+          entry.target.classList.add('show-expand');
           lineEl.style.height = (lineHeight + elHeight).toString() + 'px';
           obs.unobserve(entry.target);
         }
       });
     },
-    rootMargin: '-35px',
   });
 
   // handling the edge case when the window get resize
@@ -77,18 +80,7 @@ const AboutMe = () => {
           {/* timeline contents */}
           <div className="timeline--content h-fit">
             {TimelineData.map((timeline, i) => {
-              return (
-                <div key={i} className="timeline--content-text">
-                  <div className="text-box">
-                    <h2 className="text-[#66fcf1] capitalize text-lg">
-                      {timeline.title}
-                    </h2>
-                    <small className="italic">{timeline.date}</small>
-
-                    <p className="text-sm">{timeline.content}</p>
-                  </div>
-                </div>
-              );
+              return <TimelineItem key={i} item={timeline} />;
             })}
           </div>
         </div>

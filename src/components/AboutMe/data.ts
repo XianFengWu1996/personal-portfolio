@@ -1,10 +1,3 @@
-interface TimeLine {
-  date: string;
-  title: string;
-  content?: string;
-  alignment: 'left' | 'right';
-}
-
 export const TimelineData: TimeLine[] = [
   {
     date: 'Sept 2018',

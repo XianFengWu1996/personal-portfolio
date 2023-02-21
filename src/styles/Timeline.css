@@ -14,7 +14,7 @@
   width: 2px;
   height: 0px;
   background-color: var(--mainColor);
-  transition: all 5s;
+  transition: all 3s;
 }
 
 .timeline--content {
@@ -23,7 +23,8 @@
 
 .timeline--content-text {
   position: relative;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 .timeline--content-text:last-child {
