@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { TimelineData } from './data';
 
 const AboutMe = () => {
+  // the observer will monitor the whether or not the each element is in view or not
+  // once the element is view, we want to animate the line element to match the element
   useObserver({
     watchList: ['.timeline--content-text'],
     callback: (entries, obs) => {
@@ -26,16 +28,14 @@ const AboutMe = () => {
     },
     rootMargin: '-35px',
   });
-  // this is to handle the edge case where the window get resize and the element wider but shorter in height
-  // for example the element might be 300px height because its in mobile size, but as the screen
-  // get resize and become larger, there are more space for the content, therefore the element height will be less
-  // but the timeline height stay the same and be much longer than the container height
-  // the solution is to listen to the window resize event, and when the line height surpass the container height
-  // we will set the line height to the container height
-  // if the line height is still transition then it will not cause a problem, the problem is when the line finish
-  // transition and the window gets resize
 
-  function resizeListener(this: Window, ev: UIEvent) {
+  // handling the edge case when the window get resize
+  // as the screen gets wider, there will be less height due wider screen to place content
+  // ex. an element with text in mobile screen can be 300px in height and 300px in width
+  // but as screen get resize to 600px in width, the height might just be around 150px, since there are more space horizontally
+  // the observer above is meant to handle the height of the line for the timeline as it gets scrolled
+  // however, the line might be too long if the user resize the window when the line complete the animation
+  function resizeListener() {
     // grab the documents required
     // the content container for the timeline
     const textContent = document.querySelector('.timeline--content');
@@ -54,7 +54,7 @@ const AboutMe = () => {
     // if the lineHeight became longer than the container height
     timelineLine.style.height = `${textContent.clientHeight}px`;
   }
-  // add a listen for line during window resizing
+  // add a listen for line during window resizing to handle timeline line edge case
   useEffect(() => {
     window.addEventListener('resize', resizeListener);
 
@@ -67,13 +67,14 @@ const AboutMe = () => {
     <div className="min-h-full ">
       <h1 className="title mx-auto">About Me</h1>
 
-      {/* content */}
       <div className="w-full px-5 py-10">
         <div className="timeline--container">
+          {/* timeline line */}
           <span id="timeline--fill">
             <span id="timeline--line"></span>
           </span>
 
+          {/* timeline contents */}
           <div className="timeline--content h-fit">
             {TimelineData.map((timeline, i) => {
               return (
