@@ -34,25 +34,21 @@ interface ClassArgs extends IntersectionObserverInit {
   toggleClass: string;
 }
 
-export const useObserverToggleClass = (a: ClassArgs) => {
+export const useObserverToggleClass = (args: ClassArgs) => {
   useEffect(() => {
     const observerParams = {
-      root: a.root ?? null,
-      rootMargin: a.rootMargin ?? '0%',
-      threshold: a.threshold ?? 0,
+      root: args.root ?? null,
+      rootMargsrgin: args.rootMargin ?? '0%',
+      threshold: args.threshold ?? 0,
     };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
-        console.log(entry.target);
-        console.log(entry.isIntersecting);
-        entry.target.classList.toggle(a.toggleClass, entry.isIntersecting);
+        entry.target.classList.toggle(args.toggleClass, entry.isIntersecting);
       });
     }, observerParams);
 
-    a.classlist.forEach((string) => {
+    args.classlist.forEach((string) => {
       const items = document.querySelectorAll(string);
-      console.log(items);
 
       items.forEach((item) => {
         observer.observe(item);
@@ -62,5 +58,33 @@ export const useObserverToggleClass = (a: ClassArgs) => {
     return () => {
       observer.disconnect();
     };
-  }, [a]);
+  }, [args]);
+};
+
+interface ObserverArgs extends IntersectionObserverInit {
+  watchList: string[]; // can be id or classes
+  callback: IntersectionObserverCallback;
+}
+
+export const useObserver = (args: ObserverArgs) => {
+  useEffect(() => {
+    const observerParams = {
+      root: args.root ?? null,
+      rootMargin: args.rootMargin ?? '0%',
+      threshold: args.threshold ?? 0,
+    };
+    const observer = new IntersectionObserver(args.callback, observerParams);
+
+    args.watchList.forEach((string) => {
+      const items = document.querySelectorAll(string);
+
+      items.forEach((item) => {
+        observer.observe(item);
+      });
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [args]);
 };

@@ -4,6 +4,7 @@ import Expertise from '@/components/Expertise/Expertise';
 import Main from '@/components/Main/Main';
 import NavBar from '@/components/Navbar/NavBar';
 import Projects from '@/components/Projects/Projects';
+import AboutMe from '@/components/AboutMe/AboutMe';
 
 const electrolize = Electrolize({
   weight: ['400'],
@@ -25,7 +26,7 @@ export default function Home() {
         <Main />
         <Expertise />
         <Projects />
-        {/* <AboutMe />  */}
+        <AboutMe />
         {/* <Contact />  */}
         {/* <Footer />  */}
       </main>
