@@ -1,18 +1,21 @@
-.timeline--container {
+.timeline--container-mobile,
+.timeline--container-desktop {
   height: 100%;
   width: 100%;
-  display: flex;
 }
 
-#timeline--fill {
+#timeline--fill-mobile,
+#timeline--fill-desktop {
   width: 5rem;
   display: flex;
   justify-content: center;
+  z-index: -1;
 }
 
-#timeline--line {
+#timeline--line-mobile,
+#timeline--line-desktop {
   width: 2px;
-  height: 0px;
+  height: 0;
   background-color: var(--mainColor);
   transition: all 3s;
 }
@@ -21,37 +24,54 @@
   flex: 1;
 }
 
-.timeline--content-text {
+.timeline--text-left,
+.timeline--text-right {
   position: relative;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
 }
 
-.timeline--content-text:last-child {
+.timeline--text-left:last-child,
+.timeline--text-right:last-child {
   padding-bottom: 0;
 }
 
-.timeline--content-text::after {
+.timeline--text-left::after,
+.timeline--text-right::before {
   content: '';
   position: absolute;
   width: 18px;
   height: 18px;
   background-color: white;
   border: 4px solid var(--mainColor);
-  top: 0;
-  left: -3rem;
+  top: 2.5rem;
   border-radius: 50%;
   z-index: 2;
 }
 
-.text-box {
+.timeline--text-right::before {
+  right: calc(100vw - 90px);
+}
+
+@media (min-width: 1024px) {
+  .timeline--text-left::after {
+    left: calc((100vw / 2) - 49px);
+  }
+
+  .timeline--text-right::before {
+    right: calc((100vw / 2) - 49px);
+  }
+}
+
+.text--box-right,
+.text--box-left {
   background-color: #3a3b3c;
   padding: 1rem 1.2rem 1rem 1.2rem;
   border-radius: 1rem;
   position: relative;
 }
 
-.text-box::before {
+.text--box-right::before {
   content: '\A';
   position: absolute;
   top: 15%;
@@ -63,14 +83,49 @@
   border-color: transparent #3a3b3c transparent transparent;
 }
 
-.text-box > small {
+.text--box-left::after {
+  content: '\A';
+  position: absolute;
+  top: 15%;
+  right: -0.9rem;
+  height: 20px;
+  width: 15px;
+  border-style: solid;
+  border-width: 10px 20px 10px 0px;
+  transform: scaleX(-1);
+  border-color: transparent #3a3b3c transparent transparent;
+}
+
+.text--box-left > small,
+.text--box-right > small {
   position: absolute;
   top: 0;
-  right: 0;
   background-color: var(--contractColor);
   padding: 0.5rem 1rem;
+}
+
+.text--box-right > small {
+  right: 0;
   border-bottom-left-radius: 0.5rem;
   border-top-right-radius: 1rem;
+}
+
+.text--box-left > small {
+  left: 0;
+  border-bottom-right-radius: 0.5rem;
+  border-top-left-radius: 1rem;
+}
+
+.text--box-right > h2 {
+  text-align: start;
+}
+
+.text--box-left > h2 {
+  text-align: end;
+}
+
+.text--box-left > p {
+  text-align: end;
 }
 
 .ellipsis--3 {
