@@ -1,5 +1,7 @@
 import { useObserver } from '@/hooks/useIntersectionObserver';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { IoArrowBack } from 'react-icons/io5';
+import Dialog from '../Dialog';
 import { TimelineData } from './data';
 import TimelineItem from './TimelineItem';
 
@@ -66,8 +68,34 @@ const AboutMe = () => {
     };
   }, []);
 
+  const [open, setOpen] = useState<boolean>(false);
+  const [data, setData] = useState<TimeLine>();
+
+  const handleOpen = (item: TimeLine) => {
+    setOpen(true); // open the dialog
+    setData(item); // set the data for the dialog
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className="min-h-full ">
+    <div className="min-h-full overflow-x-clip">
+      <Dialog open={open} onClose={handleClose}>
+        <div className="px-8 py-5">
+          <IoArrowBack
+            size={50}
+            className="hover:bg-gray-200 rounded-full p-3 text-2xl cursor-pointer"
+            onClick={handleClose}
+          />
+          <div className="h-full my-2">
+            <h1 className="text-2xl my-2">{data?.title}</h1>
+            <small className="my-2">{data?.date}</small>
+            <p className="my-2 text-sm">{data?.content}</p>
+          </div>
+        </div>
+      </Dialog>
       <h1 className="title mx-auto">About Me</h1>
 
       <div className="w-full px-5 py-10">
@@ -80,7 +108,9 @@ const AboutMe = () => {
           {/* timeline contents */}
           <div className="timeline--content h-fit">
             {TimelineData.map((timeline, i) => {
-              return <TimelineItem key={i} item={timeline} />;
+              return (
+                <TimelineItem key={i} item={timeline} onOpen={handleOpen} />
+              );
             })}
           </div>
         </div>
