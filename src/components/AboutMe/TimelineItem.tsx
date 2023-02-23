@@ -37,8 +37,8 @@ export const DesktopTimeLineItem = ({ item, onOpen, index }: Props) => {
     <div
       className={`cursor-pointer place-items-end max-w-[45%] ${
         index % 2 === 0
-          ? 'justify-self-start timeline--text-left'
-          : 'justify-self-end timeline--text-right'
+          ? 'justify-self-start timeline--text-left slide--right-expand-hide '
+          : 'justify-self-end timeline--text-right slide--left-expand-hide '
       }`}
       onClick={handleOnClick}
     >
