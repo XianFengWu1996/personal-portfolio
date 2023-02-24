@@ -30,9 +30,6 @@ const AboutMe = () => {
         if (!lineEl) return;
         let lineHeight = Number(lineEl.style.height.replace('px', ''));
 
-        console.log(elHeight);
-        console.log(containerHeight);
-        console.log(lineHeight);
         if (lineHeight < containerHeight && entry.isIntersecting) {
           entry.target.classList.add('show-expand');
           lineEl.style.height = (lineHeight + elHeight).toString() + 'px';
@@ -49,8 +46,6 @@ const AboutMe = () => {
   // the observer above is meant to handle the height of the line for the timeline as it gets scrolled
   // however, the line might be too long if the user resize the window when the line complete the animation
   function resizeListener(this: Window) {
-    const desktop = this.innerWidth > 1024;
-
     // grab the documents required
     // the content container for the timeline
     const textContent = document.querySelector(`.timeline--content`);

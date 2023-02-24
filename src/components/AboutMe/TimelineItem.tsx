@@ -8,6 +8,7 @@ export const TimelineItem = ({ item, onOpen }: Props) => {
   const handleOnClick = () => {
     onOpen(item);
   };
+
   return (
     <div
       className={`timeline--text-right cursor-pointer slide--left-expand-hide`}

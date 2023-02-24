@@ -64,29 +64,33 @@
   opacity: 0.9;
 }
 
-/* dialog  */
-.dialog {
-  z-index: 9999;
+#dialog {
+  z-index: 9990;
   position: fixed;
+  inset: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+#dialog--overlay {
+  height: 100%;
+  width: 100%;
+  background-color: #161515a5;
+  z-index: 9998;
+}
+
+/* dialog  */
+#dialog--content {
+  z-index: 9999;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: scroll;
-}
-
-.overlay {
-  background-color: #090909c7;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transform-origin: bottom;
 }
 
 #contact--button:hover {
   background-color: rgb(26, 38, 67);
+  transform: scale(1.1);
+  transition: all 1s;
 }

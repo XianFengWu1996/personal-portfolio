@@ -1,8 +1,11 @@
 type Color = string;
 
-interface Dialog {
+interface DialogState {
   open?: boolean;
   onClose?: VoidFunction;
+}
+
+interface Dialog extends DialogState {
   classes?: string[];
   styles?: CSSProperties | undefined;
   children: ReactNode;
@@ -11,4 +14,5 @@ interface Dialog {
   width?: string;
   height?: string;
   fullScreen?: boolean;
+  overlayColor?: Color;
 }
