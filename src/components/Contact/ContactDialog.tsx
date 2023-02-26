@@ -1,20 +1,23 @@
+import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
-
+import { ContactInput } from '../Input/ContactInput';
+import { ContactTextArea } from '../Input/ContextTextArea';
 const ContactDialog = ({ open, onClose }: DialogState) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <h1>Contact</h1>
+      <form className="py-7 px-10">
+        <h1 className="text-2xl">Contact</h1>
 
-      <form>
         <fieldset>
           <legend>
+            <ContactInput placeholder="Name" />
+            <ContactInput placeholder="Email" />
+            <ContactInput placeholder="Subject" />
+            <ContactTextArea placeholder="Type some message" />
+
             <div className="flex flex-col">
-              <input type="text" placeholder="Name" />
-              <input type="text" placeholder="Email" />
-              <input type="text" placeholder="Subject" />
-              <input type="text" placeholder="Message" />
-              <button>Send</button>
-              <button>Cancel</button>
+              <BaseButton text="Send" type="Filled" />
+              <BaseButton text="Cancel" type="Transparent" />
             </div>
           </legend>
         </fieldset>
