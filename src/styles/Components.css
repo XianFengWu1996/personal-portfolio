@@ -94,3 +94,12 @@
   transform: scale(1.1);
   transition: all 1s;
 }
+
+.button {
+  transition: all ease 0.8s;
+}
+
+.button:hover {
+  opacity: 0.8;
+  background-color: rgb(0, 0, 0, 0.1);
+}
