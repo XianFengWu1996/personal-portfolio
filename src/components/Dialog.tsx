@@ -19,6 +19,7 @@ const Dialog = (props: Dialog) => {
 
       // listen for the dialog open
       if (props.open) {
+        if (opened) return; // this is to prevent animation on input change and page rendereds
         element.style.display = 'block';
 
         content.animate(
@@ -88,7 +89,6 @@ const Dialog = (props: Dialog) => {
 
   useEffect(() => {
     function escapeKeyListener(this: Document, ev: KeyboardEvent) {
-      console.log(ev.key);
       if (ev.key == 'Escape') {
         if (props.onClose) props.onClose();
       }
