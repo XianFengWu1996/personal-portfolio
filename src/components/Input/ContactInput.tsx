@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 interface InputProps {
   type?: React.HTMLInputTypeAttribute | undefined;
-  placeholder?: string;
   name?: string;
+  value: string | number | readonly string[];
+  id: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  required?: boolean;
 }
 
 export const ContactInput = ({
   type = 'text',
-  placeholder = 'Enter text here',
   name = '',
+  required = false,
+  id,
+  value,
+  onChange,
 }: InputProps) => {
   return (
-    <input
-      className="my-2 px-4 py-2 rounded-lg"
-      name={name}
-      type={type}
-      placeholder={placeholder}
-    />
+    <div className="my-3 relative">
+      <input
+        id={id}
+        className="input--contact"
+        name={name}
+        type={type}
+        required={required}
+        value={value}
+        onChange={onChange}
+      />
+
+      <label htmlFor={id} className="label--contact">
+        {name}
+      </label>
+    </div>
   );
 };
