@@ -19,58 +19,6 @@ html {
   margin: 0;
 }
 
-input {
-  width: 100%;
-  outline: none;
-}
-
-.input--contact {
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.label--contact {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-left: 1.2rem;
-  transform: translateY(-50%);
-  color: #8f9498;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  text-transform: capitalize;
-}
-
-/* input:focus {
-  outline: none !important;
-  border: 1.5px solid #66fcf1;
-  box-shadow: 0 0 5px #719ece;
-} */
-
-/* .input--contact {
-  width: 100%;
-} */
-
-/* .input--contact:focus + .label--contact {
-  color: #fff;
-  background-color: blueviolet;
-  padding: 0.2rem 0.6rem;
-  border-radius: 0.6rem;
-  width: fit-content;
-}
-
-.label--contact {
-  position: absolute;
-  width: fit-content;
-  top: 50%;
-  left: 0;
-  transform: translate(0, -50%);
-  margin-left: 1.2rem;
-  color: #8f9499;
-  transition: all 1s ease;
-} */
-
 textarea {
   border: none;
   overflow: auto;

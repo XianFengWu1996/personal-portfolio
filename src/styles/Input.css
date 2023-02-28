@@ -1,0 +1,23 @@
+input {
+  width: 100%;
+  outline: none;
+}
+
+.input--contact {
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.label--contact {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: 1.2rem;
+  transform: translateY(-50%);
+  color: #8f9498;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: capitalize;
+  transition: all 1s ease;
+}

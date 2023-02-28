@@ -39,6 +39,7 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
           value={state.name}
           onChange={handleInput}
           required
+          placeholder="Name"
         />
         <ContactInput
           id="email"
@@ -46,12 +47,14 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
           value={state.email}
           onChange={handleInput}
           required
+          placeholder="Email"
         />
         <ContactInput
           id="subject"
           name="subject"
           value={state.subject}
           onChange={handleInput}
+          placeholder="Subject"
         />
         <ContactTextArea
           id="message"

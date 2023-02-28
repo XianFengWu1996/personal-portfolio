@@ -3,6 +3,7 @@ import '@/styles/Components.css';
 import '@/styles/Timeline.css';
 import '@/styles/Button.css';
 import '@/styles/Animation.css';
+import '@/styles/Input.css';
 
 import type { AppProps } from 'next/app';
 
