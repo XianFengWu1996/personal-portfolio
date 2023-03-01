@@ -1,17 +1,4 @@
-import React, { ChangeEventHandler, useEffect } from 'react';
-
-interface InputProps {
-  type?: React.HTMLInputTypeAttribute | undefined;
-  name?: string;
-  value: string | number | readonly string[];
-  id: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  required?: boolean;
-  placeholder?: string;
-  autoComplete?: 'on' | 'off';
-  autoCapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
-  autoCorrect?: 'on' | 'off';
-}
+import { useEffect } from 'react';
 
 export const ContactInput = ({
   type = 'text',
@@ -24,6 +11,7 @@ export const ContactInput = ({
   autoComplete = 'off',
   autoCapitalize = 'off',
   autoCorrect = 'off',
+  autoFocus = false,
 }: InputProps) => {
   useEffect(() => {
     const originalTextColor = '#8f9498';
@@ -39,11 +27,14 @@ export const ContactInput = ({
 
     // on focus in, animate the label to the right
     function focusIn() {
+      // add the outline on focus
+      if (container)
+        container.style.outline = `1.5px solid ${animationTextColor}`;
+
       // during focusing in, move the label to the left 100% (right) minus the element width with some space
       // label.clientWidth is the element width excluding the margin
       // the first 1.2rem is to offset the margin left
-      // the second 1.2rem is to give some breathing room
-
+      // the second rem is to give some breathing room
       // design 1, color change
       // label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem - 1.2rem)`;
 
@@ -64,6 +55,9 @@ export const ContactInput = ({
 
     // on focus in, animate the label back to the left
     function focusOut() {
+      // remove the outline
+      if (container) container.style.outline = 'none';
+
       if (input.value.length < 1) {
         // on focus out, return the label back to the original spot
         label.style.left = '0';
@@ -103,6 +97,7 @@ export const ContactInput = ({
         autoCapitalize={autoCapitalize}
         autoComplete={autoComplete}
         autoCorrect={autoCorrect}
+        autoFocus={autoFocus}
       />
 
       <label htmlFor={id} className="label--contact-input">

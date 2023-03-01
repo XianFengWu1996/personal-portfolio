@@ -1,6 +1,7 @@
 type Color = string;
 
 interface DialogState {
+  id?: string;
   open?: boolean;
   onClose?: VoidFunction;
 }

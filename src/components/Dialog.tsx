@@ -1,6 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
-const Dialog = (props: Dialog) => {
+const Dialog = ({
+  open,
+  onClose,
+  bgColor = '#f8f8f8',
+  textColor = '#000',
+  width = '50%',
+  height = 'max-content',
+  fullScreen,
+  styles,
+  children,
+  classes,
+  id,
+}: Dialog) => {
   const ref = useRef<HTMLDivElement>(null);
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -12,14 +24,13 @@ const Dialog = (props: Dialog) => {
       // fidn the document for content and overlay
       if (!ref.current) return;
       const element = ref.current;
-      const content = element.querySelector('#dialog--content');
-      const overlay = element.querySelector('#dialog--overlay');
+      const content = element.querySelector('.dialog--content');
+      const overlay = element.querySelector('.dialog--overlay');
 
       if (!content || !overlay) return;
-
+      console.log(open);
       // listen for the dialog open
-      if (props.open) {
-        if (opened) return; // this is to prevent animation on input change and page rendereds
+      if (open) {
         element.style.display = 'block';
 
         content.animate(
@@ -76,12 +87,12 @@ const Dialog = (props: Dialog) => {
     };
 
     handleElementOpenAndClose();
-  }, [props, opened]);
+  }, [open, opened]);
 
   const classString = () => {
     let s = '';
 
-    props.classes?.map((c) => {
+    classes?.map((c) => {
       s += `${c} `;
     });
     return s;
@@ -90,7 +101,7 @@ const Dialog = (props: Dialog) => {
   useEffect(() => {
     function escapeKeyListener(this: Document, ev: KeyboardEvent) {
       if (ev.key == 'Escape') {
-        if (props.onClose) props.onClose();
+        onClose!();
       }
     }
 
@@ -99,26 +110,31 @@ const Dialog = (props: Dialog) => {
     return () => {
       document.removeEventListener('keydown', escapeKeyListener);
     };
-  }, [props]);
+  }, [onClose]);
 
   return (
-    <div role="dialog" id="dialog" ref={ref} style={{ display: 'none' }}>
+    <div
+      role="dialog"
+      id={id}
+      className="dialog"
+      ref={ref}
+      style={{ display: 'none' }}
+    >
       <div
-        id="dialog--content"
         style={{
-          background: props.bgColor ?? '#f8f8f8',
-          color: props.textColor ?? '#000',
-          minWidth: props.fullScreen ? '100%' : props.width ?? '50%',
-          minHeight: props.fullScreen ? '100%' : props.height ?? 'max-content',
-          borderRadius: props.fullScreen ? 0 : '0.75rem',
-          ...props.styles,
+          background: bgColor,
+          color: textColor,
+          minWidth: fullScreen ? '100%' : width,
+          minHeight: fullScreen ? '100%' : height,
+          borderRadius: fullScreen ? 0 : '0.75rem',
+          ...styles,
         }}
-        className={`${classString()}`}
+        className={`dialog--content ${classString()}`}
       >
-        {props.children}
+        {children}
       </div>
 
-      <div id="dialog--overlay" onClick={props.onClose}></div>
+      <div className="dialog--overlay" onClick={onClose}></div>
     </div>
   );
 };

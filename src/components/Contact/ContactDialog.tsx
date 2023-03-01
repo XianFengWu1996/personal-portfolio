@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
 import { ContactInput } from '../Input/ContactInput';
@@ -23,8 +23,24 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  useEffect(() => {
+    // if the dialog opens focus the first input
+    if (open) {
+      const dialog = document.getElementById('contact--dialog');
+
+      if (!dialog) return;
+
+      const firstInput = dialog.getElementsByTagName('input')[0];
+
+      if (firstInput.hasAttribute('autoFocus')) {
+        firstInput.focus();
+      }
+    }
+  }, [open]);
+
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog id="contact--dialog" open={open} onClose={onClose}>
       <form
         className="py-7 px-10"
         onSubmit={(e) => {
@@ -40,6 +56,7 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
           onChange={handleInput}
           required
           placeholder="Name"
+          autoFocus={true}
         />
         <ContactInput
           id="email"

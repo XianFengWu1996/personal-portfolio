@@ -64,7 +64,7 @@
   opacity: 0.9;
 }
 
-#dialog {
+.dialog {
   z-index: 9990;
   position: fixed;
   inset: 0;
@@ -72,7 +72,7 @@
   min-width: 100vw;
 }
 
-#dialog--overlay {
+.dialog--overlay {
   height: 100%;
   width: 100%;
   background-color: #161515a5;
@@ -80,7 +80,7 @@
 }
 
 /* dialog  */
-#dialog--content {
+.dialog--content {
   z-index: 9999;
   position: absolute;
   top: 50%;
