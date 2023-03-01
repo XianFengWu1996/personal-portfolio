@@ -3,10 +3,15 @@ input {
   outline: none;
 }
 
+.container--contact {
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
 .input--contact {
   padding-inline: 1rem;
   padding-block: 0.5rem;
-  border-radius: 0.5rem;
+  background-color: transparent;
 }
 
 .label--contact {

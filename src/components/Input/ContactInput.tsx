@@ -26,7 +26,7 @@ export const ContactInput = ({
   autoCorrect = 'off',
 }: InputProps) => {
   useEffect(() => {
-    let originalTextColor = '';
+    const originalTextColor = '#8f9498';
     const animationTextColor = '#8a2be2';
     let container = document.getElementById(`container--contact-${id}`);
 
@@ -36,9 +36,6 @@ export const ContactInput = ({
     const label = container.getElementsByTagName('label')[0]; // the label element
 
     if (!input || !label) return; // stop if either not found
-    originalTextColor = window
-      .getComputedStyle(label)
-      .getPropertyValue('color');
 
     // on focus in, animate the label to the right
     function focusIn() {
@@ -52,25 +49,32 @@ export const ContactInput = ({
 
       // label.style.color = animationTextColor;
       // design 2, background change
-      label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem - 1.2rem - 1.6rem)`;
-
-      label.style.color = '#fff';
-      label.style.backgroundColor = animationTextColor;
-      label.style.paddingBlock = '0.3rem';
-      label.style.paddingInline = '0.8rem';
-      label.style.borderRadius = '0.6rem';
-      label.style.fontSize = '0.75rem';
+      if (input.value.length < 1) {
+        label.style.color = '#fff';
+        label.style.backgroundColor = animationTextColor;
+        label.style.paddingBlock = '0.3rem';
+        label.style.paddingInline = '0.8rem';
+        label.style.borderRadius = '0.4rem';
+        label.style.fontSize = '0.75rem';
+        label.style.marginLeft = '0';
+        label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem - 0.7rem)`;
+        input.style.width = `calc(100% - ${label.clientWidth}px - 1.2rem - 0.7rem)`;
+      }
     }
 
     // on focus in, animate the label back to the left
     function focusOut() {
-      // on focus out, return the label back to the original spot
-      label.style.left = '0';
-      label.style.color = originalTextColor;
+      if (input.value.length < 1) {
+        // on focus out, return the label back to the original spot
+        label.style.left = '0';
+        label.style.color = originalTextColor;
 
-      label.style.padding = '0';
-      label.style.background = 'none';
-      label.style.fontSize = '1rem';
+        label.style.padding = '0';
+        label.style.background = 'none';
+        label.style.fontSize = '1rem';
+        label.style.marginLeft = '1.2rem';
+        input.style.width = '100%';
+      }
     }
     // add listener to the input elements
     input.addEventListener('focusin', focusIn);
@@ -84,7 +88,10 @@ export const ContactInput = ({
   }, [id]);
 
   return (
-    <div id={`container--contact-${id}`} className="my-3 relative">
+    <div
+      id={`container--contact-${id}`}
+      className="my-3 relative container--contact"
+    >
       <input
         id={id}
         className="input--contact"
