@@ -1,30 +1,22 @@
-import React, { ChangeEventHandler, useEffect } from 'react';
+import { ChangeEventHandler, useEffect } from 'react';
 
-interface InputProps {
-  type?: React.HTMLInputTypeAttribute | undefined;
-  name?: string;
-  value: string | number | readonly string[];
-  id: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  required?: boolean;
+interface TextAreaProps {
   placeholder?: string;
-  autoComplete?: 'on' | 'off';
-  autoCapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
-  autoCorrect?: 'on' | 'off';
+  name?: string;
+  rows?: number;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
+  value: string | number | readonly string[] | undefined;
+  id: string;
 }
 
-export const ContactInput = ({
-  type = 'text',
-  name = '',
-  required = false,
-  placeholder = 'Enter text',
+export const ContactTextArea = ({
   id,
+  placeholder = 'Enter text here',
+  name = '',
+  rows = 5,
   value,
   onChange,
-  autoComplete = 'off',
-  autoCapitalize = 'off',
-  autoCorrect = 'off',
-}: InputProps) => {
+}: TextAreaProps) => {
   useEffect(() => {
     const originalTextColor = '#8f9498';
     const animationTextColor = '#8a2be2';
@@ -32,10 +24,10 @@ export const ContactInput = ({
 
     if (!container) return; // stop if not found
 
-    const input = container.getElementsByTagName('input')[0]; // the input element
+    const textarea = container.getElementsByTagName('textarea')[0]; // the textarea element
     const label = container.getElementsByTagName('label')[0]; // the label element
 
-    if (!input || !label) return; // stop if either not found
+    if (!textarea || !label) return; // stop if either not found
 
     // on focus in, animate the label to the right
     function focusIn() {
@@ -49,41 +41,44 @@ export const ContactInput = ({
 
       // label.style.color = animationTextColor;
       // design 2, background change
-      if (input.value.length < 1) {
+      if (textarea.value.length < 1) {
         label.style.color = '#fff';
         label.style.backgroundColor = animationTextColor;
-        label.style.paddingBlock = '0.25rem';
+        label.style.paddingBlock = '0.3rem';
         label.style.paddingInline = '0.8rem';
         label.style.borderRadius = '0.4rem';
         label.style.fontSize = '0.75rem';
         label.style.marginLeft = '0';
-        label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem - 0.4rem)`;
-        input.style.width = `calc(100% - ${label.clientWidth}px - 1.2rem - 0.4rem)`;
+        label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem )`;
+        label.style.top = `calc(100% - ${label.clientHeight}px - 1rem)`;
+        textarea.style.width = `calc(100% - ${label.clientWidth}px - 1.2rem)`;
+        label.innerText = 'Message';
       }
     }
 
     // on focus in, animate the label back to the left
     function focusOut() {
-      if (input.value.length < 1) {
+      if (textarea.value.length < 1) {
         // on focus out, return the label back to the original spot
         label.style.left = '0';
+        label.style.top = `1rem`;
         label.style.color = originalTextColor;
 
         label.style.padding = '0';
         label.style.background = 'none';
         label.style.fontSize = '1rem';
         label.style.marginLeft = '1.2rem';
-        input.style.width = '100%';
+        textarea.style.width = '100%';
       }
     }
-    // add listener to the input elements
-    input.addEventListener('focusin', focusIn);
-    input.addEventListener('focusout', focusOut);
+    // add listener to the textarea elements
+    textarea.addEventListener('focusin', focusIn);
+    textarea.addEventListener('focusout', focusOut);
 
     // clean up
     return () => {
-      input.removeEventListener('focusin', focusIn);
-      input.removeEventListener('focusout', focusOut);
+      textarea.removeEventListener('focusin', focusIn);
+      textarea.removeEventListener('focusout', focusOut);
     };
   }, [id]);
 
@@ -92,20 +87,16 @@ export const ContactInput = ({
       id={`container--contact-${id}`}
       className="my-3 relative container--contact"
     >
-      <input
+      <textarea
         id={id}
-        className="input--contact"
+        className="my-2 px-4 py-2 rounded-lg"
         name={name}
-        type={type}
-        required={required}
-        value={value}
+        rows={rows}
         onChange={onChange}
-        autoCapitalize={autoCapitalize}
-        autoComplete={autoComplete}
-        autoCorrect={autoCorrect}
+        value={value}
       />
 
-      <label htmlFor={id} className="label--contact-input">
+      <label htmlFor={id} className="label--contact-textarea">
         {placeholder}
       </label>
     </div>

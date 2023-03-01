@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
 import { ContactInput } from '../Input/ContactInput';
-import { ContactTextArea } from '../Input/ContextTextArea';
+import { ContactTextArea } from '../Input/ContactTextArea';
 interface ContactState {
   [key: string]: string;
 }

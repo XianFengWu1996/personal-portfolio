@@ -3,6 +3,19 @@ input {
   outline: none;
 }
 
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
+  width: 100%;
+}
+
 .container--contact {
   background-color: #fff;
   border-radius: 0.5rem;
@@ -14,15 +27,25 @@ input {
   background-color: transparent;
 }
 
-.label--contact {
+.label--contact-input,
+.label--contact-textarea {
   position: absolute;
-  top: 50%;
   left: 0;
   margin-left: 1.2rem;
-  transform: translateY(-50%);
   color: #8f9498;
   font-size: 0.875rem;
   line-height: 1.25rem;
   text-transform: capitalize;
   transition: all 1s ease;
+}
+
+.label--contact-input {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.label--contact-textarea {
+  top: 10%;
+  transform: translateY(-10%);
+  height: fit-content;
 }
