@@ -6,6 +6,7 @@
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
   font-family: 'Poppin';
+  margin-block: 1rem;
 }
 
 .message--text {
@@ -21,21 +22,4 @@
 .message--text-content {
   font-size: 0.75rem;
   font-weight: 300;
-}
-
-.exit {
-  animation: exit 1s ease forwards;
-}
-
-@keyframes exit {
-  25% {
-    transform: translateX(-50%);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-    display: none;
-  }
 }

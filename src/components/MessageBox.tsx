@@ -1,5 +1,5 @@
 import { Poppins } from '@next/font/google';
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { AiFillExclamationCircle, AiOutlineWarning } from 'react-icons/ai';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
@@ -63,9 +63,12 @@ const MessageBox = ({
     }
   }, [state, type]);
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
     <div
-      className={`${poppins.className} message--container exit`}
+      ref={ref}
+      className={`${poppins.className} message--container`}
       style={{
         backgroundColor: state.bgColor,
         ...style,
@@ -77,7 +80,29 @@ const MessageBox = ({
         <p className="text-[0.7rem] message--text-content">{text}</p>
       </div>
 
-      <button className="text-[0.75rem] py-5" onClick={() => {}}>
+      <button
+        className="text-[0.75rem] py-5"
+        onClick={async () => {
+          if (ref.current) {
+            const animation = ref.current.animate(
+              {
+                transform: [
+                  'translate(0) translateX(-25%)',
+                  'translateX(100%)',
+                ],
+                opacity: [1, 0],
+                offset: [0.25, 1],
+                easing: ['ease'],
+              },
+              1000
+            );
+
+            if (await animation.finished) {
+              ref.current.parentNode?.removeChild(ref.current);
+            }
+          }
+        }}
+      >
         Dismiss
       </button>
     </div>
