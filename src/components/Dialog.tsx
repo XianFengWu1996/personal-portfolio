@@ -28,7 +28,6 @@ const Dialog = ({
       const overlay = element.querySelector('.dialog--overlay');
 
       if (!content || !overlay) return;
-      console.log(open);
       // listen for the dialog open
       if (open) {
         element.style.display = 'block';

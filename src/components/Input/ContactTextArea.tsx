@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const ContactTextArea = ({
   id,
@@ -13,10 +13,12 @@ export const ContactTextArea = ({
   autoCorrect = 'off',
   autoFocus = false,
 }: TextAreaProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const originalTextColor = '#8f9498';
     const animationTextColor = '#8a2be2';
-    let container = document.getElementById(`container--contact-${id}`);
+    let container = ref.current;
 
     if (!container) return; // stop if not found
 
@@ -42,6 +44,8 @@ export const ContactTextArea = ({
       // label.style.color = animationTextColor;
       // design 2, background change
       if (textarea.value.length < 1) {
+        label.innerText = 'Message';
+
         label.style.color = '#fff';
         label.style.backgroundColor = animationTextColor;
         label.style.paddingBlock = '0.3rem';
@@ -52,7 +56,6 @@ export const ContactTextArea = ({
         label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem )`;
         label.style.top = `calc(100% - ${label.clientHeight}px - 1rem)`;
         textarea.style.width = `calc(100% - ${label.clientWidth}px - 1.2rem)`;
-        label.innerText = 'Message';
       }
     }
 
@@ -62,6 +65,8 @@ export const ContactTextArea = ({
       if (container) container.style.outline = 'none';
 
       if (textarea.value.length < 1) {
+        label.innerText = 'Type Your Message';
+
         // on focus out, return the label back to the original spot
         label.style.left = '0';
         label.style.top = `1rem`;
@@ -86,10 +91,7 @@ export const ContactTextArea = ({
   }, [id]);
 
   return (
-    <div
-      id={`container--contact-${id}`}
-      className="my-3 relative container--contact"
-    >
+    <div id={id} ref={ref} className="my-3 relative container--contact">
       <textarea
         id={id}
         className="my-2 px-4 py-2 rounded-lg"

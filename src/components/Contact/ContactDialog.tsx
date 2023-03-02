@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
 import { ContactInput } from '../Input/ContactInput';
@@ -11,17 +11,20 @@ interface ContactState {
 }
 
 const ContactDialog = ({ open, onClose }: DialogState) => {
+  // STATES
+  // Form States
   const [state, setState] = useState<ContactState>({
     name: '',
     email: '',
     subject: '',
     message: '',
   });
-
+  // Loading State
   const [loading, setLoading] = useState<boolean>(false);
-
+  // Message box State
   const [messages, setMessages] = useState<JSX.Element[]>([]);
 
+  // handle input change
   const handleInput = (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -46,12 +49,9 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
     }
   }, [open]);
 
-  const ref = useRef<HTMLFormElement>(null);
-
   return (
     <Dialog id="contact--dialog" open={open} onClose={onClose}>
       <form
-        ref={ref}
         className="py-7 px-10"
         onSubmit={(e) => {
           e.preventDefault();
@@ -105,7 +105,6 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
             onClick={() => {
               const button = document.getElementById('button--contact-send');
               if (!button) return;
-              console.log(button);
               button.style.minWidth = '60px';
               setLoading(true);
 
