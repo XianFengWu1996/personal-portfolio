@@ -3,6 +3,8 @@ import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
 import { ContactInput } from '../Input/ContactInput';
 import { ContactTextArea } from '../Input/ContactTextArea';
+import MessageBox from '../MessageBox';
+
 interface ContactState {
   [key: string]: string;
 }
@@ -14,6 +16,8 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
     subject: '',
     message: '',
   });
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleInput = (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -81,10 +85,33 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
           placeholder="Type your message"
         />
 
-        <div className="flex flex-col">
-          <BaseButton text="Send" type="Filled" />
+        <div className="flex flex-col items-center w-full">
+          <BaseButton
+            id="button--contact-send"
+            text="Send"
+            type="Filled"
+            loading={loading}
+            onClick={() => {
+              const button = document.getElementById('button--contact-send');
+              if (!button) return;
+              console.log(button);
+              button.style.minWidth = '60px';
+              setLoading(true);
+
+              setTimeout(() => {
+                setLoading(false);
+                button.style.minWidth = '100%';
+              }, 3000);
+            }}
+          />
           <BaseButton text="Cancel" type="Transparent" />
         </div>
+
+        <MessageBox
+          type="success"
+          title="Message Sent"
+          text="Your message has arrived in my inbox, please allow some time for me to get back to you."
+        />
       </form>
     </Dialog>
   );

@@ -4,6 +4,7 @@ import '@/styles/Timeline.css';
 import '@/styles/Button.css';
 import '@/styles/Animation.css';
 import '@/styles/Input.css';
+import '@/styles/Message.css';
 
 import type { AppProps } from 'next/app';
 

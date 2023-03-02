@@ -16,6 +16,7 @@ type TextSize =
 type ButtonType = 'Filled' | 'Outlined' | 'Transparent';
 
 interface ButtonProps {
+  id?: string;
   text: string;
   textColor?: Color;
   textSize?: TextSize;
@@ -23,4 +24,5 @@ interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   style?: CSSProperties;
   borderRadius?: number;
+  loading?: boolean;
 }

@@ -1,12 +1,15 @@
 import { CSSProperties } from 'react';
+import Tailspin from '../SVG/Tailspin';
 
 const BaseButton = ({
+  id,
   text,
   onClick,
   style,
   type = 'Transparent',
   textSize = 'base',
   borderRadius = 10,
+  loading = false,
 }: ButtonProps) => {
   const buttonStyleGenerator = () => {
     switch (type) {
@@ -33,18 +36,21 @@ const BaseButton = ({
         break;
     }
   };
+
   return (
     <button
+      id={id}
       type="button"
       onClick={onClick}
-      className={`button py-2 my-1 text-${textSize}`}
+      className={`button py-2 my-1 text-${textSize} min-w-full flex items-center justify-center`}
       style={{
+        transition: 'all 1s ease',
         borderRadius: borderRadius,
         ...buttonStyleGenerator(),
         ...style,
       }}
     >
-      {text}
+      {loading ? <Tailspin size={25} thickness={3} /> : text}
     </button>
   );
 };

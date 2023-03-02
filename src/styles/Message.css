@@ -1,0 +1,41 @@
+.message--container {
+  color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-family: 'Poppin';
+}
+
+.message--text {
+  margin-inline: 1.25rem;
+  flex: 3;
+}
+
+.message--text-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.message--text-content {
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+.exit {
+  animation: exit 1s ease forwards;
+}
+
+@keyframes exit {
+  25% {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+    display: none;
+  }
+}
