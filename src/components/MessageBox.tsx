@@ -65,6 +65,24 @@ const MessageBox = ({
 
   const ref = useRef<HTMLDivElement>(null);
 
+  const onDismiss = async () => {
+    if (ref.current) {
+      const animation = ref.current.animate(
+        {
+          transform: ['translate(0) translateX(-25%)', 'translateX(100%)'],
+          opacity: [1, 0],
+          offset: [0.25, 1],
+          easing: ['ease'],
+        },
+        1000
+      );
+
+      if (await animation.finished) {
+        ref.current.parentNode?.removeChild(ref.current);
+      }
+    }
+  };
+
   return (
     <div
       ref={ref}
@@ -80,29 +98,7 @@ const MessageBox = ({
         <p className="text-[0.7rem] message--text-content">{text}</p>
       </div>
 
-      <button
-        className="text-[0.75rem] py-5"
-        onClick={async () => {
-          if (ref.current) {
-            const animation = ref.current.animate(
-              {
-                transform: [
-                  'translate(0) translateX(-25%)',
-                  'translateX(100%)',
-                ],
-                opacity: [1, 0],
-                offset: [0.25, 1],
-                easing: ['ease'],
-              },
-              1000
-            );
-
-            if (await animation.finished) {
-              ref.current.parentNode?.removeChild(ref.current);
-            }
-          }
-        }}
-      >
+      <button className="text-[0.75rem] py-5" onClick={onDismiss}>
         Dismiss
       </button>
     </div>

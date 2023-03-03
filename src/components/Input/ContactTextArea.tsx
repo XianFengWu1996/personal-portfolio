@@ -53,7 +53,7 @@ export const ContactTextArea = ({
         label.style.borderRadius = '0.4rem';
         label.style.fontSize = '0.75rem';
         label.style.marginLeft = '0';
-        label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem )`;
+        label.style.left = `calc(100% - ${label.clientWidth}px - 1.2rem - 0.2rem)`;
         label.style.top = `calc(100% - ${label.clientHeight}px - 1rem)`;
         textarea.style.width = `calc(100% - ${label.clientWidth}px - 1.2rem)`;
       }

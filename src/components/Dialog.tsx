@@ -5,12 +5,12 @@ const Dialog = ({
   onClose,
   bgColor = '#f8f8f8',
   textColor = '#000',
-  width = '50%',
+  width = '600px',
   height = 'max-content',
-  fullScreen,
   styles,
   children,
   classes,
+  fullScreen,
   id,
 }: Dialog) => {
   const ref = useRef<HTMLDivElement>(null);

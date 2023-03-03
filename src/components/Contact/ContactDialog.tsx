@@ -5,6 +5,7 @@ import { ContactInput } from '../Input/ContactInput';
 import { ContactTextArea } from '../Input/ContactTextArea';
 import MessageBox from '../MessageBox';
 import { v4 } from 'uuid';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface ContactState {
   [key: string]: string;
@@ -43,20 +44,45 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
 
       const firstInput = dialog.getElementsByTagName('input')[0];
 
-      if (firstInput.hasAttribute('autoFocus')) {
-        firstInput.focus();
-      }
+      firstInput.focus();
     }
   }, [open]);
 
+  const onMessageSend = () => {
+    const button = document.getElementById('button--contact-send');
+    if (!button) return;
+    button.style.minWidth = '60px';
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      button.style.minWidth = '100%';
+      setMessages([
+        ...messages,
+        <MessageBox
+          key={v4()}
+          type="success"
+          title="Message Sent"
+          text="Your message has arrived in my inbox, please allow some time for me to get back to you."
+        />,
+      ]);
+    }, 3000);
+  };
+
+  const onCancel = () => {
+    if (onClose) onClose();
+  };
+
+  const mobile = useMediaQuery('(max-width: 640px)');
+
   return (
-    <Dialog id="contact--dialog" open={open} onClose={onClose}>
-      <form
-        className="py-7 px-10"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+    <Dialog
+      id="contact--dialog"
+      open={open}
+      onClose={onClose}
+      fullScreen={mobile}
+    >
+      <form className="py-7 px-10">
         {messages.length > 0 &&
           messages.map((msg) => {
             return msg;
@@ -69,16 +95,13 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
           name="name"
           value={state.name}
           onChange={handleInput}
-          required
           placeholder="Name"
-          autoFocus={true}
         />
         <ContactInput
           id="email"
           name="email"
           value={state.email}
           onChange={handleInput}
-          required
           placeholder="Email"
         />
         <ContactInput
@@ -102,28 +125,9 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
             text="Send"
             type="Filled"
             loading={loading}
-            onClick={() => {
-              const button = document.getElementById('button--contact-send');
-              if (!button) return;
-              button.style.minWidth = '60px';
-              setLoading(true);
-
-              setTimeout(() => {
-                setLoading(false);
-                button.style.minWidth = '100%';
-                setMessages([
-                  ...messages,
-                  <MessageBox
-                    key={v4()}
-                    type="success"
-                    title="Message Sent"
-                    text="Your message has arrived in my inbox, please allow some time for me to get back to you."
-                  />,
-                ]);
-              }, 3000);
-            }}
+            onClick={onMessageSend}
           />
-          <BaseButton text="Cancel" type="Transparent" />
+          <BaseButton text="Cancel" type="Transparent" onClick={onCancel} />
         </div>
       </form>
     </Dialog>
