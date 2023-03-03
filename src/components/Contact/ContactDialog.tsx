@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
 import { ContactInput } from '../Input/ContactInput';
@@ -49,6 +49,38 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
   }, [open]);
 
   const onMessageSend = () => {
+    // try {
+    //   // null or empty
+    //   if (!state.name || state.name.length < 1) {
+    //     throw new Error('Missing name');
+    //   }
+
+    //   // null or empty
+    //   if (!state.email || state.email.length < 1) {
+    //     throw new Error('Missing name');
+    //   }
+
+    //   // null or empty
+    //   if (!state.subject || state.subject.length < 1) {
+    //     throw new Error('Missing name');
+    //   }
+
+    //   // null or empty
+    //   if (!state.message || state.message.length < 1) {
+    //     throw new Error('Missing name');
+    //   }
+    // } catch (error) {
+    //   return setMessages([
+    //     ...messages,
+    //     <MessageBox
+    //       key={v4()}
+    //       type="error"
+    //       title="Oppps, something went wrong"
+    //       text={(error as Error).message}
+    //     />,
+    //   ]);
+    // }
+
     const button = document.getElementById('button--contact-send');
     if (!button) return;
     button.style.minWidth = '60px';
@@ -69,6 +101,10 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
     }, 3000);
   };
 
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
+
   const onCancel = () => {
     if (onClose) onClose();
   };
@@ -82,7 +118,7 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
       onClose={onClose}
       fullScreen={mobile}
     >
-      <form className="py-7 px-10">
+      <form className="py-7 px-10" onSubmit={onSubmit}>
         {messages.length > 0 &&
           messages.map((msg) => {
             return msg;

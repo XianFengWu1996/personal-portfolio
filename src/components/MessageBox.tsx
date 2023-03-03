@@ -1,5 +1,5 @@
 import { Poppins } from '@next/font/google';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { CSSProperties, useRef } from 'react';
 import { AiFillExclamationCircle, AiOutlineWarning } from 'react-icons/ai';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
@@ -27,41 +27,36 @@ const MessageBox = ({
   text = 'text',
   style,
 }: Props) => {
-  const [state, setState] = useState<State>({
-    bgColor: '#4BB543',
-    icon: FaCheckCircle,
-  });
-
-  useEffect(() => {
+  const getState = () => {
     switch (type) {
       case 'error':
-        setState({
-          ...state,
+        return {
           bgColor: '#ff3333',
           icon: FaTimesCircle,
-        });
-        break;
-
+        };
       case 'warning':
-        setState({
-          ...state,
+        return {
           bgColor: '#ff9966',
           icon: AiOutlineWarning,
-        });
-        break;
+        };
 
       case 'update':
-        setState({
-          ...state,
+        return {
           bgColor: '##40b5f0',
           icon: AiFillExclamationCircle,
-        });
-        break;
-
+        };
       default:
-        break;
+        return {
+          bgColor: '#4BB543',
+          icon: FaCheckCircle,
+        };
     }
-  }, [state, type]);
+  };
+
+  let state: State = {
+    bgColor: getState().bgColor,
+    icon: getState().icon,
+  };
 
   const ref = useRef<HTMLDivElement>(null);
 
