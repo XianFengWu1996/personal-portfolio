@@ -7,11 +7,13 @@
   padding: 0.5rem 0.75rem;
   font-family: 'Poppin';
   margin-block: 1rem;
+  max-width: 100%;
 }
 
 .message--text {
   margin-inline: 1.25rem;
   flex: 3;
+  flex-wrap: wrap;
 }
 
 .message--text-title {

@@ -3,9 +3,9 @@ import BaseButton from '../button/BaseButton';
 import Dialog from '../Dialog';
 import { ContactInput } from '../Input/ContactInput';
 import { ContactTextArea } from '../Input/ContactTextArea';
-import MessageBox from '../MessageBox';
-import { v4 } from 'uuid';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import MessageBox from '../MessageBox';
+import { generateMessage } from '@/helper/Message';
 
 interface ContactState {
   [key: string]: string;
@@ -22,8 +22,9 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
   });
   // Loading State
   const [loading, setLoading] = useState<boolean>(false);
+
   // Message box State
-  const [messages, setMessages] = useState<JSX.Element[]>([]);
+  const [messages, setMessages] = useState<Message.Props[]>([]);
 
   // handle input change
   const handleInput = (
@@ -49,37 +50,32 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
   }, [open]);
 
   const onMessageSend = () => {
-    // try {
-    //   // null or empty
-    //   if (!state.name || state.name.length < 1) {
-    //     throw new Error('Missing name');
-    //   }
+    try {
+      // null or empty
+      if (!state.name || state.name.length < 1) {
+        throw new Error('Missing name');
+      }
 
-    //   // null or empty
-    //   if (!state.email || state.email.length < 1) {
-    //     throw new Error('Missing name');
-    //   }
+      // null or empty
+      if (!state.email || state.email.length < 1) {
+        throw new Error('Missing email');
+      }
 
-    //   // null or empty
-    //   if (!state.subject || state.subject.length < 1) {
-    //     throw new Error('Missing name');
-    //   }
+      // null or empty
+      if (!state.subject || state.subject.length < 1) {
+        throw new Error('Missing subject');
+      }
 
-    //   // null or empty
-    //   if (!state.message || state.message.length < 1) {
-    //     throw new Error('Missing name');
-    //   }
-    // } catch (error) {
-    //   return setMessages([
-    //     ...messages,
-    //     <MessageBox
-    //       key={v4()}
-    //       type="error"
-    //       title="Oppps, something went wrong"
-    //       text={(error as Error).message}
-    //     />,
-    //   ]);
-    // }
+      // null or empty
+      if (!state.message || state.message.length < 1) {
+        throw new Error('Missing message');
+      }
+    } catch (error) {
+      return setMessages([
+        ...messages,
+        generateMessage('error', 'Oppps', (error as Error).message),
+      ]);
+    }
 
     const button = document.getElementById('button--contact-send');
     if (!button) return;
@@ -89,14 +85,14 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
     setTimeout(() => {
       setLoading(false);
       button.style.minWidth = '100%';
+
       setMessages([
         ...messages,
-        <MessageBox
-          key={v4()}
-          type="success"
-          title="Message Sent"
-          text="Your message has arrived in my inbox, please allow some time for me to get back to you."
-        />,
+        generateMessage(
+          'success',
+          'Message Sent',
+          'Message has arrived in my inbox, please allow some time for me to get to you.'
+        ),
       ]);
     }, 3000);
   };
@@ -109,6 +105,11 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
     if (onClose) onClose();
   };
 
+  const onMessageBoxDismiss = (id: string) => {
+    const msgs = messages.filter((msg) => msg.id !== id);
+    setMessages(msgs);
+  };
+
   const mobile = useMediaQuery('(max-width: 640px)');
 
   return (
@@ -118,11 +119,19 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
       onClose={onClose}
       fullScreen={mobile}
     >
-      <form className="py-7 px-10" onSubmit={onSubmit}>
-        {messages.length > 0 &&
-          messages.map((msg) => {
-            return msg;
-          })}
+      <form className="py-7 px-10 transition-all" onSubmit={onSubmit}>
+        {messages.map((msg) => {
+          return (
+            <MessageBox
+              key={msg.key}
+              id={msg.id}
+              type={msg.type}
+              title={msg.title}
+              text={msg.text}
+              onClose={onMessageBoxDismiss}
+            />
+          );
+        })}
 
         <h1 className="text-2xl">Contact</h1>
 
