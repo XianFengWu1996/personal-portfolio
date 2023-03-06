@@ -1,5 +1,6 @@
 import { Transporter } from 'nodemailer';
 import { MailOptions } from 'nodemailer/lib/json-transport';
+import handlebars from 'handlebars';
 import fs from 'fs';
 import { promisify } from 'util';
 import path from 'path';
@@ -34,17 +35,26 @@ export const sendConfirmationMessage = async (
   data: RequestData,
   transporter: Transporter
 ) => {
+  let originalHtmlFile = await readFile(
+    path.join(
+      process.cwd(),
+      '/src/pages/api/email/confirmation/confirmation.handlebars'
+    ),
+    'utf-8'
+  );
+
+  let template = handlebars.compile(originalHtmlFile);
+  let templateData = {
+    name: data.name,
+    myName: process.env.NODEMAILER_MYNAME,
+  };
+  let templateHtml = template(templateData);
+
   let mailOption: MailOptions = {
     from: process.env.NODEMAILER_USER,
     to: data.email,
     subject: 'Message Received',
-    html: await readFile(
-      path.join(
-        process.cwd(),
-        '/src/pages/api/email/confirmation/confirmation.html'
-      ),
-      'utf-8'
-    ),
+    html: templateHtml,
   };
 
   try {

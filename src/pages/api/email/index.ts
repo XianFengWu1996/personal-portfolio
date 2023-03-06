@@ -43,7 +43,7 @@ export default async function handler(
       sendEmailWithMessage(body, transporter),
       sendConfirmationMessage(body, transporter),
     ])
-      .then((value) => {
+      .then(() => {
         res.status(200).json({});
       })
       .catch((error) => {

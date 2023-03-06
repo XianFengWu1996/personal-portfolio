@@ -16,6 +16,7 @@
     "dotenv": "^16.0.3",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
     "next": "13.1.5",
     "nodemailer": "^6.9.1",
