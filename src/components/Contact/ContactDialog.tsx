@@ -49,7 +49,7 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
     }
   }, [open]);
 
-  const onMessageSend = () => {
+  const onMessageSend = async () => {
     try {
       // null or empty
       if (!state.name || state.name.length < 1) {
@@ -70,6 +70,15 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
       if (!state.message || state.message.length < 1) {
         throw new Error('Missing message');
       }
+
+      const response = await fetch('/api/email', {
+        method: 'post',
+        body: JSON.stringify({
+          ...state,
+        }),
+      });
+
+      console.log(await response.json());
     } catch (error) {
       return setMessages([
         ...messages,
@@ -77,24 +86,24 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
       ]);
     }
 
-    const button = document.getElementById('button--contact-send');
-    if (!button) return;
-    button.style.minWidth = '60px';
-    setLoading(true);
+    // const button = document.getElementById('button--contact-send');
+    // if (!button) return;
+    // button.style.minWidth = '60px';
+    // setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      button.style.minWidth = '100%';
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   button.style.minWidth = '100%';
 
-      setMessages([
-        ...messages,
-        generateMessage(
-          'success',
-          'Message Sent',
-          'Message has arrived in my inbox, please allow some time for me to get to you.'
-        ),
-      ]);
-    }, 3000);
+    //   setMessages([
+    //     ...messages,
+    //     generateMessage(
+    //       'success',
+    //       'Message Sent',
+    //       'Message has arrived in my inbox, please allow some time for me to get to you.'
+    //     ),
+    //   ]);
+    // }, 3000);
   };
 
   const onSubmit = (e: FormEvent) => {

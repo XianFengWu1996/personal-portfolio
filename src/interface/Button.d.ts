@@ -1,3 +1,5 @@
+type RefObject = import('react').RefObject;
+
 type TextSize =
   | 'xs'
   | 'sm'

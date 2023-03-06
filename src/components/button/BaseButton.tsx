@@ -1,6 +1,8 @@
 import { CSSProperties } from 'react';
 import Tailspin from '../SVG/Tailspin';
 
+interface Props extends ButtonProps {}
+
 const BaseButton = ({
   id,
   text,
