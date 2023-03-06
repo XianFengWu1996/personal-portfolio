@@ -15,11 +15,10 @@ export default async function handler(
 ) {
   const requestMethod = req.method;
 
-  const body = JSON.parse(req.body);
-
-  const { name, email, subject, message }: RequestData = body;
-
   if (requestMethod === 'POST') {
+    const body = JSON.parse(req.body);
+
+    const { name, email, subject, message }: RequestData = body;
     if (
       !isString(name) ||
       !isString(email) ||

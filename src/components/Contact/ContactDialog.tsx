@@ -50,60 +50,79 @@ const ContactDialog = ({ open, onClose }: DialogState) => {
   }, [open]);
 
   const onMessageSend = async () => {
-    try {
-      // null or empty
-      if (!state.name || state.name.length < 1) {
-        throw new Error('Missing name');
+    setLoading(true);
+    const button = document.getElementById('button--contact-send');
+    // start the loading process
+    if (!button) return;
+    button.style.minWidth = '60px';
+
+    // set a 1 second timer, to make the process look more smooth, else the process might end before even seeing the loading button
+    setTimeout(async () => {
+      try {
+        // null or empty
+        if (!state.name || state.name.length < 1) {
+          throw new Error('Missing name');
+        }
+
+        // null or empty
+        if (!state.email || state.email.length < 1) {
+          throw new Error('Missing email');
+        }
+
+        // null or empty
+        if (!state.subject || state.subject.length < 1) {
+          throw new Error('Missing subject');
+        }
+
+        // null or empty
+        if (!state.message || state.message.length < 1) {
+          throw new Error('Missing message');
+        }
+
+        // start the http request to send the message to the backend
+        const response = await fetch('/api/email', {
+          method: 'post',
+          body: JSON.stringify({
+            ...state,
+          }),
+        });
+
+        // save the json object that was send back
+        let json = await response.json();
+
+        // check if the error has occur or if the response was ok
+        if (!response.ok) {
+          // check if there is an error message
+          if (json.message) {
+            throw new Error(json.message);
+          } else {
+            // use the default error text for the specific error
+            throw new Error(response.statusText);
+          }
+        } else {
+          setMessages([
+            ...messages,
+            generateMessage(
+              'success',
+              'Message Sent',
+              'Message has arrived in my inbox, please allow some time for me to get to you.'
+            ),
+          ]);
+        }
+
+        // console.log(await response.json());
+      } catch (error) {
+        console.log(error);
+        return setMessages([
+          ...messages,
+          generateMessage('error', 'Oppps', (error as Error).message),
+        ]);
+      } finally {
+        // stop the loading for the button and reset the button width
+        setLoading(false);
+        button.style.minWidth = '100%';
       }
-
-      // null or empty
-      if (!state.email || state.email.length < 1) {
-        throw new Error('Missing email');
-      }
-
-      // null or empty
-      if (!state.subject || state.subject.length < 1) {
-        throw new Error('Missing subject');
-      }
-
-      // null or empty
-      if (!state.message || state.message.length < 1) {
-        throw new Error('Missing message');
-      }
-
-      const response = await fetch('/api/email', {
-        method: 'post',
-        body: JSON.stringify({
-          ...state,
-        }),
-      });
-
-      console.log(await response.json());
-    } catch (error) {
-      return setMessages([
-        ...messages,
-        generateMessage('error', 'Oppps', (error as Error).message),
-      ]);
-    }
-
-    // const button = document.getElementById('button--contact-send');
-    // if (!button) return;
-    // button.style.minWidth = '60px';
-    // setLoading(true);
-
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   button.style.minWidth = '100%';
-
-    //   setMessages([
-    //     ...messages,
-    //     generateMessage(
-    //       'success',
-    //       'Message Sent',
-    //       'Message has arrived in my inbox, please allow some time for me to get to you.'
-    //     ),
-    //   ]);
-    // }, 3000);
+    }, 1000);
   };
 
   const onSubmit = (e: FormEvent) => {

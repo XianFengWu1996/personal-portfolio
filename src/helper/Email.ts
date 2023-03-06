@@ -14,6 +14,7 @@ export const sendEmailWithMessage = async (
   let mailOption: MailOptions = {
     from: process.env.NODEMAILER_USER,
     to: process.env.NODEMAILER_RECIPIENT,
+    // to: '', // testing front end remove later
     subject: 'Personal Portfolio Contact Form Message',
     html: `
           <div>Sender: ${data.name}</div>
