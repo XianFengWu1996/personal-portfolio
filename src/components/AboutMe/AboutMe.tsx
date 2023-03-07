@@ -86,7 +86,7 @@ const AboutMe = () => {
   };
 
   return (
-    <div className="min-h-full overflow-x-clip">
+    <section id="aboutme" className="min-h-full overflow-x-clip">
       <Dialog open={open} onClose={handleClose}>
         <div className="px-8 py-5">
           <IoArrowBack
@@ -105,7 +105,7 @@ const AboutMe = () => {
 
       <MobileTimeline handleOpen={handleOpen} />
       <DesktopTimeline handleOpen={handleOpen} />
-    </div>
+    </section>
   );
 };
 

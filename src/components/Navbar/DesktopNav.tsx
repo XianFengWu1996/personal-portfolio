@@ -2,9 +2,9 @@ import { AiOutlineMenu } from 'react-icons/ai';
 
 import WhiteLogo from '../../../public/assets/images/logos/logo-white.png';
 import Image from 'next/image';
-import Link from 'next/link';
 import SocialIcons from './SocialIcons';
 import { useEffect } from 'react';
+import { scrollTo } from '@/helper/Scroll';
 
 interface DesktopNavProps {
   onOpen: VoidFunction;
@@ -51,12 +51,15 @@ const DesktopNav = (props: DesktopNavProps) => {
       {/* navigation buttons */}
       <div className="hidden md:flex">
         <ul className=" w-[400px] flex justify-between uppercase cursor-pointer items-center">
-          <Link href={'/'}>Expertise</Link>
-          <Link href={'/'}>Projects</Link>
-          <Link href={'/'}>About Me</Link>
-          <button className="border-[#66fcf1] rounded-lg border-2 px-4 py-1">
-            Resume
-          </button>
+          <div role="link" onClick={() => scrollTo('expertise')}>
+            Expertise
+          </div>
+          <div role="link" onClick={() => scrollTo('projects')}>
+            Projects
+          </div>
+          <div role="link" onClick={() => scrollTo('aboutme')}>
+            About Me
+          </div>
         </ul>
       </div>
 

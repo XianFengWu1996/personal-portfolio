@@ -1,5 +1,5 @@
+import { scrollTo } from '@/helper/Scroll';
 import Image from 'next/image';
-import Link from 'next/link';
 import { IoMdClose } from 'react-icons/io';
 import WhiteLogo from '../../../public/assets/images/logos/logo-white.png';
 import SocialIcons from './SocialIcons';
@@ -10,6 +10,13 @@ interface MobileNavProps {
 }
 
 const MobileNav = (props: MobileNavProps) => {
+  const handleOnClick = (id: string) => {
+    props.onClose();
+
+    setTimeout(() => {
+      scrollTo(id);
+    }, 500);
+  };
   return (
     <div
       className={
@@ -39,24 +46,32 @@ const MobileNav = (props: MobileNavProps) => {
           </div>
 
           {/* Navigation  */}
-          <ul className="w-full h-[125px] flex flex-col justify-between uppercase cursor-pointer">
-            <Link href={'/'} className="menu_item">
+          <ul className="w-full flex flex-col justify-between uppercase cursor-pointer">
+            <div
+              role={'link'}
+              className="menu_item"
+              onClick={() => handleOnClick('expertise')}
+            >
               Expertise
-            </Link>
-            <Link href={'/'} className="menu_item">
+            </div>
+            <div
+              role={'link'}
+              className="menu_item"
+              onClick={() => handleOnClick('projects')}
+            >
               Projects
-            </Link>
-            <Link href={'/'} className="menu_item">
+            </div>
+            <div
+              role={'link'}
+              className="menu_item"
+              onClick={() => handleOnClick('aboutme')}
+            >
               About Me
-            </Link>
+            </div>
           </ul>
 
-          <button className="border-[#66fcf1] rounded-lg border-2 px-4 py-1 w-[50%] mx-6">
-            Resume
-          </button>
-
           {/* Social  */}
-          <SocialIcons />
+          <SocialIcons onClose={props.onClose} />
         </div>
       </div>
     </div>

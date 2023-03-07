@@ -13,7 +13,7 @@ const Contact = () => {
   };
 
   return (
-    <section className=" w-full py-20">
+    <section id="contact" className=" w-full py-20">
       <ContactDialog open={open} onClose={handleClose} />
 
       <h1 className="title mx-auto">Get in Touch</h1>
