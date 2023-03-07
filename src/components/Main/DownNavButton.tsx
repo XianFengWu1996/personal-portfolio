@@ -1,3 +1,5 @@
+import { scrollTo } from '@/helper/Scroll';
+
 const DownNavButton = () => {
   return (
     <svg
@@ -8,6 +10,7 @@ const DownNavButton = () => {
       height="60"
       fill="none"
       viewBox="0 0 35 60"
+      onClick={() => scrollTo('expertise')}
     >
       <path
         id="outer"
