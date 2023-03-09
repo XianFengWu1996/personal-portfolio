@@ -18,15 +18,27 @@ const AboutMe = () => {
 
       entries.map((entry) => {
         // we are watching for when the user scroll up, if the element is intersecting with the screen
+        // get the index of the element
+
         if (entry.boundingClientRect.bottom > 0 && entry.isIntersecting) {
+          const index = Number(
+            entry.target.getAttribute('data-index')?.valueOf()
+          );
+
           // start the animation process
+          // perform the animation
           entry.target.animate(
             {
               opacity: [0, 1],
               filter: ['blur(2px)', 'blur(0px)'],
-              transform: ['translateX(100%)', 'translateX(0)'],
+              transform: desktop
+                ? [
+                    `translateX(${index % 2 === 0 ? '100%' : '-100%'})`,
+                    'translateX(0)',
+                  ]
+                : ['translate(100%)', 'translateX(0)'],
             },
-            1000
+            500
           );
 
           const elHeight = entry.target.clientHeight; // the height of the element
@@ -37,16 +49,14 @@ const AboutMe = () => {
           );
           if (!lineEl) return;
 
-          // get the index of the element
-          const index =
-            Number(entry.target.getAttribute('data-index')?.valueOf()) + 1;
+          const calcIndex = index + 1;
 
           // base on the index, multiply the index by the element height to get the current line height,
           // however, since we added 1 to the index, the line will never reach 0, therefore when the last element is reach
           // also set the new line height to 0
           let newLineHeight;
-          if (index > 1) {
-            newLineHeight = index * elHeight;
+          if (calcIndex > 1) {
+            newLineHeight = calcIndex * elHeight;
           } else {
             newLineHeight = 0;
           }
@@ -65,16 +75,26 @@ const AboutMe = () => {
     callback: (entries, obs) => {
       // when the window width goes above 1024, we deemed it to be a desktop size
       const desktop = window.innerWidth > 1024;
+
       entries.map((entry) => {
         if (entry.boundingClientRect.top < 0 && entry.isIntersecting) {
+          // get the index of the element and add one to the index, because we want the first element to be 1 and not 0
+          const index = Number(
+            entry.target.getAttribute('data-index')?.valueOf()
+          );
           // perform the animation
           entry.target.animate(
             {
               opacity: [0, 1],
               filter: ['blur(2px)', 'blur(0px)'],
-              transform: ['translateX(100%)', 'translateX(0)'],
+              transform: desktop
+                ? [
+                    `translateX(${index % 2 === 0 ? '-100%' : '100%'})`,
+                    'translateX(0)',
+                  ]
+                : ['translate(100%)', 'translateX(0)'],
             },
-            1000
+            500
           );
 
           // the height of the element that is being tracked
@@ -86,11 +106,8 @@ const AboutMe = () => {
           );
           if (!lineEl) return;
 
-          // get the index of the element and add one to the index, because we want the first element to be 1 and not 0
-          const index =
-            Number(entry.target.getAttribute('data-index')?.valueOf()) + 1;
           // multiply the element by the index to get the current line height
-          let newLineHeight = index * elHeight;
+          let newLineHeight = (index + 1) * elHeight;
           lineEl.style.height = `${newLineHeight}px`;
         }
       });
