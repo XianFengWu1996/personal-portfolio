@@ -31,19 +31,6 @@
   padding-top: 1.5rem;
 
   cursor: pointer;
-
-  /* opacity: 0.1;
-  filter: blur(2px);
-  transition: all 0.5s ease-in-out; */
-}
-
-/* .timeline--text-right {
-  transform: translateX(100%);
-} */
-
-.timeline--text-left:last-child,
-.timeline--text-right:last-child {
-  padding-bottom: 0;
 }
 
 .timeline--text-left::after,

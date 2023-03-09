@@ -1,5 +1,5 @@
 import { useObserver } from '@/hooks/useIntersectionObserver';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { IoArrowBack } from 'react-icons/io5';
 import Dialog from '../Dialog';
 import DesktopTimeline from './DesktopTimeline';
@@ -8,6 +8,7 @@ import MobileTimeline from './MobileTimeline';
 const AboutMe = () => {
   // the observer will monitor the whether or not the each element is in view or not
   // once the element is view, we want to animate the line element to match the element
+
   // watch the upward scroll
   useObserver({
     watchList: ['.timeline--text-left', '.timeline--text-right'],
@@ -15,26 +16,10 @@ const AboutMe = () => {
       // when the window width goes above 1024, we deemed it to be a desktop size
       const desktop = window.innerWidth > 1024;
 
-      // base on the desktop size, we will selected the container for that size
-      const container = document.querySelector(
-        `.timeline--container-${desktop ? 'desktop' : 'mobile'}`
-      );
-      if (!container) return; // return if the container is not found
-      const containerHeight = container.clientHeight;
-
       entries.map((entry) => {
-        // variable that is different every iteration
-        const elHeight = entry.target.clientHeight; // the height of the element
-
-        // the line for the timeline element
-        const lineEl = document.getElementById(
-          `timeline--line-${desktop ? 'desktop' : 'mobile'}`
-        );
-        if (!lineEl) return;
-
-        if (entry.boundingClientRect.top < 0 && entry.isIntersecting) {
-          // the current height of the timeline display line
-          let lineHeight = Number(lineEl.style.height.replace('px', ''));
+        // we are watching for when the user scroll up, if the element is intersecting with the screen
+        if (entry.boundingClientRect.bottom > 0 && entry.isIntersecting) {
+          // start the animation process
           entry.target.animate(
             {
               opacity: [0, 1],
@@ -44,41 +29,45 @@ const AboutMe = () => {
             1000
           );
 
+          const elHeight = entry.target.clientHeight; // the height of the element
+
+          // get the line for the timeline element
+          const lineEl = document.getElementById(
+            `timeline--line-${desktop ? 'desktop' : 'mobile'}`
+          );
+          if (!lineEl) return;
+
+          // get the index of the element
           const index =
             Number(entry.target.getAttribute('data-index')?.valueOf()) + 1;
 
-          console.log(index);
+          // base on the index, multiply the index by the element height to get the current line height,
+          // however, since we added 1 to the index, the line will never reach 0, therefore when the last element is reach
+          // also set the new line height to 0
+          let newLineHeight;
+          if (index > 1) {
+            newLineHeight = index * elHeight;
+          } else {
+            newLineHeight = 0;
+          }
+
+          // apply the new line height to the style
+          lineEl.style.height = `${newLineHeight}px`;
         }
       });
     },
     rootMargin: '-75px 0px 0px 0px',
   });
 
+  // downward scroll
   useObserver({
     watchList: ['.timeline--text-left', '.timeline--text-right'],
     callback: (entries, obs) => {
       // when the window width goes above 1024, we deemed it to be a desktop size
       const desktop = window.innerWidth > 1024;
-
-      // base on the desktop size, we will selected the container for that size
-      const container = document.querySelector(
-        `.timeline--container-${desktop ? 'desktop' : 'mobile'}`
-      );
-      if (!container) return; // return if the container is not found
-      const containerHeight = container.clientHeight;
-
       entries.map((entry) => {
-        // variable that is different every iteration
-        const elHeight = entry.target.clientHeight; // the height of the element
-
-        // the line for the timeline element
-        const lineEl = document.getElementById(
-          `timeline--line-${desktop ? 'desktop' : 'mobile'}`
-        );
-        if (!lineEl) return;
-
-        if (entry.boundingClientRect.top > 0 && entry.isIntersecting) {
-          console.log(entry.isIntersecting);
+        if (entry.boundingClientRect.top < 0 && entry.isIntersecting) {
+          // perform the animation
           entry.target.animate(
             {
               opacity: [0, 1],
@@ -87,45 +76,27 @@ const AboutMe = () => {
             },
             1000
           );
+
+          // the height of the element that is being tracked
+          const elHeight = entry.target.clientHeight;
+
+          // the actual line element for the timeline
+          const lineEl = document.getElementById(
+            `timeline--line-${desktop ? 'desktop' : 'mobile'}`
+          );
+          if (!lineEl) return;
+
+          // get the index of the element and add one to the index, because we want the first element to be 1 and not 0
+          const index =
+            Number(entry.target.getAttribute('data-index')?.valueOf()) + 1;
+          // multiply the element by the index to get the current line height
+          let newLineHeight = index * elHeight;
+          lineEl.style.height = `${newLineHeight}px`;
         }
       });
     },
     rootMargin: '0px 0px -20px 0px',
   });
-
-  // handling the edge case when the window get resize
-  // as the screen gets wider, there will be less height due wider screen to place content
-  // ex. an element with text in mobile screen can be 300px in height and 300px in width
-  // but as screen get resize to 600px in width, the height might just be around 150px, since there are more space horizontally
-  // the observer above is meant to handle the height of the line for the timeline as it gets scrolled
-  // however, the line might be too long if the user resize the window when the line complete the animation
-  function resizeListener(this: Window) {
-    // grab the documents required
-    // the content container for the timeline
-    const textContent = document.querySelector(`.timeline--content`);
-    if (!textContent) return;
-
-    // the actually line for the timeline
-    const timelineLine = document.getElementById(`timeline--line-mobile`);
-    if (!timelineLine) return;
-
-    // .style.height return the string format with px ex. "100px"
-    // we will need the number version of the height to do comparison
-    let lineHeight: number = Number(
-      timelineLine.style.height.replace('px', '')
-    );
-
-    // if the lineHeight became longer than the container height
-    timelineLine.style.height = `${textContent.clientHeight}px`;
-  }
-  // add a listen for line during window resizing to handle timeline line edge case
-  useEffect(() => {
-    window.addEventListener('resize', resizeListener);
-
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  }, []);
 
   const [open, setOpen] = useState<boolean>(false);
   const [data, setData] = useState<TimeLine>();
