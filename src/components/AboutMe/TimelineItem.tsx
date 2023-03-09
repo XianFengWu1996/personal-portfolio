@@ -4,17 +4,19 @@ interface Props {
   index: number;
 }
 
-export const TimelineItem = ({ item, onOpen }: Props) => {
+export const TimelineItem = ({ item, onOpen, index }: Props) => {
   const handleOnClick = () => {
     onOpen(item);
   };
 
   return (
     <div
-      className={`timeline--text-right cursor-pointer slide--left-expand-hide`}
+      className={`timeline--text-right`}
+      data-index={index}
       onClick={handleOnClick}
     >
       <div className="text--box-right">
+        <p>{index + 1}</p>
         <h2 className="text-[#66fcf1] capitalize text-lg mb-2">{item.title}</h2>
         <small className="italic">{item.date}</small>
 

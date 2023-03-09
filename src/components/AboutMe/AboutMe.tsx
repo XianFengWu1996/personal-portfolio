@@ -8,35 +8,89 @@ import MobileTimeline from './MobileTimeline';
 const AboutMe = () => {
   // the observer will monitor the whether or not the each element is in view or not
   // once the element is view, we want to animate the line element to match the element
+  // watch the upward scroll
   useObserver({
     watchList: ['.timeline--text-left', '.timeline--text-right'],
     callback: (entries, obs) => {
+      // when the window width goes above 1024, we deemed it to be a desktop size
       const desktop = window.innerWidth > 1024;
 
+      // base on the desktop size, we will selected the container for that size
       const container = document.querySelector(
         `.timeline--container-${desktop ? 'desktop' : 'mobile'}`
       );
-      if (!container) return;
+      if (!container) return; // return if the container is not found
       const containerHeight = container.clientHeight;
 
       entries.map((entry) => {
         // variable that is different every iteration
         const elHeight = entry.target.clientHeight; // the height of the element
 
-        // the current height of the timeline display line
+        // the line for the timeline element
         const lineEl = document.getElementById(
           `timeline--line-${desktop ? 'desktop' : 'mobile'}`
         );
         if (!lineEl) return;
-        let lineHeight = Number(lineEl.style.height.replace('px', ''));
 
-        if (lineHeight < containerHeight && entry.isIntersecting) {
-          entry.target.classList.add('show-expand');
-          lineEl.style.height = (lineHeight + elHeight).toString() + 'px';
-          obs.unobserve(entry.target);
+        if (entry.boundingClientRect.top < 0 && entry.isIntersecting) {
+          // the current height of the timeline display line
+          let lineHeight = Number(lineEl.style.height.replace('px', ''));
+          entry.target.animate(
+            {
+              opacity: [0, 1],
+              filter: ['blur(2px)', 'blur(0px)'],
+              transform: ['translateX(100%)', 'translateX(0)'],
+            },
+            1000
+          );
+
+          const index =
+            Number(entry.target.getAttribute('data-index')?.valueOf()) + 1;
+
+          console.log(index);
         }
       });
     },
+    rootMargin: '-75px 0px 0px 0px',
+  });
+
+  useObserver({
+    watchList: ['.timeline--text-left', '.timeline--text-right'],
+    callback: (entries, obs) => {
+      // when the window width goes above 1024, we deemed it to be a desktop size
+      const desktop = window.innerWidth > 1024;
+
+      // base on the desktop size, we will selected the container for that size
+      const container = document.querySelector(
+        `.timeline--container-${desktop ? 'desktop' : 'mobile'}`
+      );
+      if (!container) return; // return if the container is not found
+      const containerHeight = container.clientHeight;
+
+      entries.map((entry) => {
+        // variable that is different every iteration
+        const elHeight = entry.target.clientHeight; // the height of the element
+
+        // the line for the timeline element
+        const lineEl = document.getElementById(
+          `timeline--line-${desktop ? 'desktop' : 'mobile'}`
+        );
+        if (!lineEl) return;
+
+        if (entry.boundingClientRect.top > 0 && entry.isIntersecting) {
+          console.log(entry.isIntersecting);
+          entry.target.animate(
+            {
+              opacity: [0, 1],
+              filter: ['blur(2px)', 'blur(0px)'],
+              transform: ['translateX(100%)', 'translateX(0)'],
+            },
+            1000
+          );
+        }
+      });
+    },
+    rootMargin: '0px 0px -20px 0px',
   });
 
   // handling the edge case when the window get resize
@@ -86,7 +140,7 @@ const AboutMe = () => {
   };
 
   return (
-    <section id="aboutme" className="min-h-full overflow-x-clip">
+    <section id="aboutme" className="min-h-full overflow-x-clip mb-20">
       <Dialog open={open} onClose={handleClose}>
         <div className="px-8 py-5">
           <IoArrowBack
