@@ -44,20 +44,32 @@ const DesktopNav = (props: DesktopNavProps) => {
       className="fixed w-full h-20 flex justify-between items-center py-5 px-3 sm:px-5 md:px-7 lg:px-10 z-[100] "
     >
       {/* logo image */}
-      <div>
+      <div className="fade--down">
         <Image src={WhiteLogo} alt="Logo Image" height={75} width={75} />
       </div>
 
       {/* navigation buttons */}
       <div className="hidden md:flex">
-        <ul className=" w-[400px] flex justify-between uppercase cursor-pointer items-center">
-          <div role="link" onClick={() => scrollTo('expertise')}>
+        <ul className=" w-[400px] flex justify-between uppercase cursor-pointer items-center desktop--nav-list">
+          <div
+            role="link"
+            className="fade--down"
+            onClick={() => scrollTo('expertise')}
+          >
             Expertise
           </div>
-          <div role="link" onClick={() => scrollTo('projects')}>
+          <div
+            role="link"
+            className="fade--down"
+            onClick={() => scrollTo('projects')}
+          >
             Projects
           </div>
-          <div role="link" onClick={() => scrollTo('aboutme')}>
+          <div
+            role="link"
+            className="fade--down"
+            onClick={() => scrollTo('aboutme')}
+          >
             About Me
           </div>
         </ul>

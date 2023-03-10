@@ -7,6 +7,7 @@ import Projects from '@/components/Projects/Projects';
 import AboutMe from '@/components/AboutMe/AboutMe';
 import Contact from '@/components/Contact/Contact';
 import Footer from '@/components/Footer/Footer';
+import { useEffect, useState } from 'react';
 
 const electrolize = Electrolize({
   weight: ['400'],
@@ -14,6 +15,14 @@ const electrolize = Electrolize({
 });
 
 export default function Home() {
+  const [load, setLoad] = useState<boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(false);
+    }, 500);
+  }, []);
+
   return (
     <>
       <Head>
@@ -23,15 +32,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`${electrolize.className} w-full h-screen text-white`}>
-        <NavBar />
-        <Main />
-        <Expertise />
-        <Projects />
-        <AboutMe />
-        <Contact />
-        <Footer />
-      </main>
+      {load ? (
+        <div className="w-full min-h-screen flex justify-center items-center text-white">
+          load
+        </div>
+      ) : (
+        <main className={`${electrolize.className} w-full h-screen text-white`}>
+          <NavBar />
+          <Main />
+          <Expertise />
+          <Projects />
+          <AboutMe />
+          <Contact />
+          <Footer />
+        </main>
+      )}
     </>
   );
 }

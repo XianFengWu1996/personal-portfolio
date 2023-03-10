@@ -4,7 +4,7 @@ const DownNavButton = () => {
   return (
     <svg
       id="down_nav_btn"
-      className="absolute bottom-14 left-[50%] translate-x-[-50%] cursor-pointer"
+      className="absolute opacity-0 bottom-14 left-[50%] translate-x-[-50%] cursor-pointer fade--in"
       xmlns="http://www.w3.org/2000/svg"
       width="35"
       height="60"
