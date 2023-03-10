@@ -31,7 +31,23 @@
   z-index: -1;
 }
 
-.menu_item {
+#hero > div > h1 {
+  animation-delay: 1400ms;
+}
+
+#hero > div > h2 {
+  animation-delay: 1500ms;
+}
+
+#hero > div > a {
+  animation-delay: 1600ms;
+}
+
+#hero > div > svg {
+  animation-delay: 1700ms;
+}
+
+.mobile--nav-item {
   padding: 1.5rem 1.5rem;
   float: left;
 
@@ -41,18 +57,18 @@
   transition: all 0.5s ease-out;
 }
 
-.menu_item:hover {
+.mobile--nav-item:hover {
   background-position: left bottom;
 }
 
-.title {
+.section--title {
   font-size: 40px;
   position: relative;
   z-index: 1;
   width: fit-content;
 }
 
-.title::after {
+.section--title::after {
   content: '';
   height: 5px;
   width: 80%;
@@ -62,4 +78,28 @@
   background-color: var(--mainColor);
   z-index: -1;
   opacity: 0.9;
+}
+
+.desktop--nav-list > div:nth-child(1) {
+  animation-delay: 200ms;
+}
+
+.desktop--nav-list > div:nth-child(2) {
+  animation-delay: 400ms;
+}
+
+.desktop--nav-list > div:nth-child(3) {
+  animation-delay: 600ms;
+}
+
+.social--icons > div:nth-child(1) {
+  animation-delay: 800ms;
+}
+
+.social--icons > div:nth-child(2) {
+  animation-delay: 1000ms;
+}
+
+.social--icons > div:nth-child(3) {
+  animation-delay: 1200ms;
 }

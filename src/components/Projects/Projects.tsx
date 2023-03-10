@@ -9,7 +9,7 @@ const Projects = () => {
   });
   return (
     <section id="projects" className="section">
-      <h1 className="title mx-auto mt-5 mb-16">Projects</h1>
+      <h1 className="section--title mx-auto mt-5 mb-16">Projects</h1>
 
       <div className="grid grid-cols-1 place-items-center lg:grid-cols-3 lg:gap-x-[5%] lg:px-16 lg:items-start">
         {projectData.map((project, index) => {

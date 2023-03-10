@@ -143,7 +143,7 @@ const AboutMe = () => {
           </div>
         </div>
       </Dialog>
-      <h1 className="title mx-auto">About Me</h1>
+      <h1 className="section--title mx-auto">About Me</h1>
 
       <MobileTimeline handleOpen={handleOpen} />
       <DesktopTimeline handleOpen={handleOpen} />

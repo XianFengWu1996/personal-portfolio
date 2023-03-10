@@ -49,21 +49,21 @@ const MobileNav = (props: MobileNavProps) => {
           <ul className="w-full flex flex-col justify-between uppercase cursor-pointer">
             <div
               role={'link'}
-              className="menu_item"
+              className="mobile--nav-item"
               onClick={() => handleOnClick('expertise')}
             >
               Expertise
             </div>
             <div
               role={'link'}
-              className="menu_item"
+              className="mobile--nav-item"
               onClick={() => handleOnClick('projects')}
             >
               Projects
             </div>
             <div
               role={'link'}
-              className="menu_item"
+              className="mobile--nav-item"
               onClick={() => handleOnClick('aboutme')}
             >
               About Me
