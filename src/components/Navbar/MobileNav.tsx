@@ -1,7 +1,6 @@
 import { scrollTo } from '@/helper/Scroll';
-import Image from 'next/image';
 import { IoMdClose } from 'react-icons/io';
-import WhiteLogo from '../../../public/assets/images/logos/logo-white.png';
+import { StaticLogo } from '../SVG/Logo';
 import SocialIcons from './SocialIcons';
 
 interface MobileNavProps {
@@ -35,7 +34,7 @@ const MobileNav = (props: MobileNavProps) => {
         <div className="flex flex-col justify-between h-[90%] w-full">
           {/* Logo and Close button  */}
           <div className="flex justify-between items-center mx-6">
-            <Image src={WhiteLogo} alt="Logo Image" height={75} width={75} />
+            <StaticLogo size={50} />
             {/* Close Icon */}
             <div
               className="hover:bg-gray-800 rounded-full cursor-pointer p-1"

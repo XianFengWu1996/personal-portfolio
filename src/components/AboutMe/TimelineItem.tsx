@@ -16,7 +16,6 @@ export const TimelineItem = ({ item, onOpen, index }: Props) => {
       onClick={handleOnClick}
     >
       <div className="text--box-right">
-        <p>{index + 1}</p>
         <h2 className="text-[#66fcf1] capitalize text-lg mb-2">{item.title}</h2>
         <small className="italic">{item.date}</small>
 

@@ -1,10 +1,9 @@
 import { AiOutlineMenu } from 'react-icons/ai';
 
-import WhiteLogo from '../../../public/assets/images/logos/logo-white.png';
-import Image from 'next/image';
 import SocialIcons from './SocialIcons';
 import { useEffect } from 'react';
 import { scrollTo } from '@/helper/Scroll';
+import { StaticLogo } from '../SVG/Logo';
 
 interface DesktopNavProps {
   onOpen: VoidFunction;
@@ -44,8 +43,8 @@ const DesktopNav = (props: DesktopNavProps) => {
       className="fixed w-full h-20 flex justify-between items-center py-5 px-3 sm:px-5 md:px-7 lg:px-10 z-[100] "
     >
       {/* logo image */}
-      <div className="fade--down">
-        <Image src={WhiteLogo} alt="Logo Image" height={75} width={75} />
+      <div className="fade--down pl-5">
+        <StaticLogo size={50} />
       </div>
 
       {/* navigation buttons */}
@@ -81,7 +80,7 @@ const DesktopNav = (props: DesktopNavProps) => {
       </div>
 
       <div
-        className="md:hidden hover:bg-gray-800 rounded-full cursor-pointer p-3 "
+        className="md:hidden hover:bg-gray-800 rounded-full cursor-pointer p-3 fade--down"
         onClick={props.onOpen}
       >
         <AiOutlineMenu size={22} />
