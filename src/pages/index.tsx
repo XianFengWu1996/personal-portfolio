@@ -20,20 +20,8 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(async () => {
-      const text = document.getElementById('logo--pc-text');
-
-      if (text) {
-        text.style.display = 'block';
-        const anim = text.animate(
-          {
-            opacity: [0, 1],
-          },
-          {
-            duration: 1000,
-          }
-        );
-      }
-    }, 3000);
+      setLoad(false);
+    }, 4400);
   }, []);
 
   return (

@@ -107,23 +107,44 @@
 #logo--pc {
   stroke-dasharray: 1480.8;
   stroke-dashoffset: 1480.8;
-  animation: animShow 2s linear forwards;
+  animation: logoShow 1s linear forwards;
 }
 
 #logo--pc-bottom {
   stroke-dasharray: 125.28;
   stroke-dashoffset: 125.28;
-  animation: animShow 1s linear forwards 2s;
+  animation: logoShow 1s linear forwards 1s;
 }
 
 #logo--pc-text {
+  opacity: 0;
   stroke-dasharray: 835.77;
   stroke-dashoffset: 835.77;
-  animation: animShow 1s linear forwards 3s;
+  animation: logoFade 0.75s linear forwards 2s;
 }
 
-@keyframes animShow {
+#logo--pc-svg {
+  animation: logoShrink 0.75s linear forwards 3.5s;
+}
+
+@keyframes logoShow {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes logoFade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logoShrink {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
   }
 }
