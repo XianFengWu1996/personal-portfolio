@@ -8,6 +8,7 @@ import AboutMe from '@/components/AboutMe/AboutMe';
 import Contact from '@/components/Contact/Contact';
 import Footer from '@/components/Footer/Footer';
 import { useEffect, useState } from 'react';
+import Logo from '@/components/SVG/Logo';
 
 const electrolize = Electrolize({
   weight: ['400'],
@@ -18,9 +19,21 @@ export default function Home() {
   const [load, setLoad] = useState<boolean>(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoad(false);
-    }, 500);
+    setTimeout(async () => {
+      const text = document.getElementById('logo--pc-text');
+
+      if (text) {
+        text.style.display = 'block';
+        const anim = text.animate(
+          {
+            opacity: [0, 1],
+          },
+          {
+            duration: 1000,
+          }
+        );
+      }
+    }, 3000);
   }, []);
 
   return (
@@ -34,7 +47,7 @@ export default function Home() {
 
       {load ? (
         <div className="w-full min-h-screen flex justify-center items-center text-white">
-          load
+          <Logo size={200} />
         </div>
       ) : (
         <main className={`${electrolize.className} w-full h-screen text-white`}>

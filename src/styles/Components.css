@@ -103,3 +103,27 @@
 .social--icons > div:nth-child(3) {
   animation-delay: 1200ms;
 }
+
+#logo--pc {
+  stroke-dasharray: 1480.8;
+  stroke-dashoffset: 1480.8;
+  animation: animShow 2s linear forwards;
+}
+
+#logo--pc-bottom {
+  stroke-dasharray: 125.28;
+  stroke-dashoffset: 125.28;
+  animation: animShow 1s linear forwards 2s;
+}
+
+#logo--pc-text {
+  stroke-dasharray: 835.77;
+  stroke-dashoffset: 835.77;
+  animation: animShow 1s linear forwards 3s;
+}
+
+@keyframes animShow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
