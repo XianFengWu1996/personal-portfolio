@@ -15,7 +15,14 @@ type MediaQuery =
   | '(max-width: 1536px)';
 
 export function useMediaQuery(query: MediaQuery) {
-  const [match, setMatch] = useState<boolean>(false);
+  const isQueryMatch = (query: string): boolean => {
+    if (typeof window === undefined) {
+      return false;
+    }
+
+    return window.matchMedia(query).matches;
+  };
+  const [match, setMatch] = useState<boolean>(isQueryMatch(query));
 
   useEffect(() => {
     const media = window.matchMedia(query);
@@ -24,10 +31,10 @@ export function useMediaQuery(query: MediaQuery) {
       setMatch(media.matches);
     };
 
-    window.addEventListener('resize', listener);
+    media.addEventListener('change', listener);
 
     return () => {
-      window.removeEventListener('resize', listener);
+      media.addEventListener('change', listener);
     };
   }, [query]);
 

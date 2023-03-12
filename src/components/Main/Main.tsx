@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <main id="hero" className="section">
       <div className="flex flex-col items-start hero--content">
-        <h1 className="text-3xl sm:4xl md:text-5xl lg:text-6xl my-3 fade--up">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl my-3 fade--up">
           Hi, my name is <span className="text-[#66FCF1]">Shawn</span>
         </h1>
 

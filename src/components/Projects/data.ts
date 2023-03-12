@@ -13,7 +13,7 @@ export const projectData: ProjectData[] = [
   {
     name: 'Taipei Cuisine V2',
     content:
-      'An upgraded version of the Taipei Cuisine web application, the app includes better error handling and more secure user verification using JWT. The app gives more options when placing an order, adds social login options, has a better design overall, has an updated and better checkout process ',
+      'As an upgraded version of the Taipei Cuisine web application, the new release boasts improved error handling and enhanced user verification with JWT for increased security. The app also provides more ordering options, includes social login capabilities, features an overall improved design, and an updated and streamlined checkout process.',
     techStack: {
       frontend: ['NextJS', 'Typescript', 'Redux', 'Material UI', 'Firebase'],
       backend: [
@@ -39,8 +39,7 @@ export const projectData: ProjectData[] = [
   {
     name: 'Taipei Cuisine V1',
     content:
-      'A full-stack web app for allowing the residents near the restaurant to have a simpler way to place an order. The web app offer options more specific to the restaurant compared to platforms such as Uber or Doordash where the options are more general. Unfortunately, the web app is just a demo web app now.',
-
+      "I developed a full-stack web application that simplifies the ordering process for residents in the vicinity of the restaurant. This web app offers more customized options specific to the restaurant, unlike general food delivery platforms such as Uber or Doordash. However, due to the restaurant's closure, the web app is now available only as a demo.",
     techStack: {
       frontend: ['NextJS', 'Typescript', 'Redux', 'Material UI', 'Firebase'],
       backend: [
@@ -65,8 +64,7 @@ export const projectData: ProjectData[] = [
   {
     name: 'Portfolio',
     content:
-      "My portfolio web application is developed with NextJS and Typescript. As for styling, I've chosen Tailwind to speed up the coding process meanwhile grasping the concept of Tailwind. All animations are written with CSS and Javascript with no external packages and it is responsive on all devices.",
-
+      ' I created my portfolio web application using NextJS and Typescript. To streamline the development process and deepen my understanding of Tailwind, I utilized it for styling. All animations were written in-house with CSS and Javascript without any external packages. Additionally, the application is fully responsive on all devices.',
     techStack: {
       frontend: ['NextJS', 'Tailwind', 'CSS', 'Typescript'],
       backend: [],

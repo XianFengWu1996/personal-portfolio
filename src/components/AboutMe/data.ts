@@ -4,13 +4,13 @@ export const TimelineData: TimeLine[] = [
     title: 'First programming class',
     alignment: 'left',
     content:
-      'During my junior year, I was first in contact with Java in an ISOM class. As I search for some coding courses online, Javascript is the first language I encounter and that is how everything started.',
+      'During my junior year of college, I first learned about Java programming language in an Information Systems and Operations Management (ISOM) course, which sparked my interest in coding. As I explored various online resources to further my skills, I stumbled upon Javascript and began my journey as a developer.',
   },
   {
     date: '2019',
     title: 'First Web Development Course',
     content:
-      'In the beginning, I searched for courses and tutorials online and followed the videoes. But the information was too scattered then I   decided to take a full web development course on Udemy. After, I fell in love with coding and took more courses on NodeJS, ReactJS, and much more.',
+      'Initially, I relied on online courses and tutorials to learn coding, but I found the information to be too scattered. Seeking a more structured approach, I enrolled in a comprehensive web development course on Udemy. This course ignited my passion for coding and motivated me to explore other technologies, such as NodeJS, ReactJS, and more, through additional courses.',
     alignment: 'right',
   },
   {
@@ -18,14 +18,14 @@ export const TimelineData: TimeLine[] = [
 
     title: 'Family Business',
     content:
-      'When Covid first hits, my family restaurant needed help as the staff are leaving. I step in and fill in the spot. As the business slow down during the pandemic, I was able to code for a few hours in the afternoon also a few hours after work.',
+      "When the Covid-19 pandemic first hit, my family's restaurant faced staffing challenges as employees were leaving. To help out, I stepped in and took on additional responsibilities. Despite the initial challenges, the pandemic caused a slowdown in business, which provided me with an opportunity to pursue my passion for coding. I used the free time in the afternoons and after work to work on coding projects and hone my skills.",
     alignment: 'left',
   },
   {
     date: 'Aug 2020 - July 2022',
     title: 'Build a Mobile App',
     content:
-      'During the time, I was task with build an mobile application for the restaurant. The first mobile application was launch in a couple months, I oversee the entire process of the designing, coding, and launching to App Store and Google Play Store. The project help me gain tons of knowledge on search for answer on Stack Overflow, locating bugs, and solid concept on OOP. The mobile was generating some traffic, but a web app seems more neccesary to make it more accessible to people on Google searches. Then I spend a couple months and created my first full-stack web application with React and NodeJS as the backend. ',
+      "As part of my responsibilities, I was tasked with developing a mobile application for my family's restaurant. Overseeing the entire process, from designing to coding and launching on App Store and Google Play Store, helped me gain valuable knowledge on troubleshooting and problem-solving. During this project, I relied heavily on Stack Overflow to search for answers, locate bugs, and solidify my understanding of Object-Oriented Programming (OOP). Although the mobile app generated some traffic, it was clear that a web app would make it more accessible to users searching on Google. To address this, I spent a few months building my first full-stack web application using React for the frontend and NodeJS for the backend. ",
     alignment: 'right',
   },
 
@@ -33,21 +33,21 @@ export const TimelineData: TimeLine[] = [
     date: 'Jan 2021 - Nov 2022',
     title: 'Build a Web App',
     content:
-      'The mobile application was generating decent traffic, but a web app was more necessary to  Google searches. Then I spend a couple of months and created my first full-stack web application with React and NodeJS as the backend. As I receive some feedback from the customers and found that the code is messy and hard to maintain, I replace the entire application with the Taipei Cuisine V1. The application was much cleaner and maintainable with the help of Typescript. Version one of the application works, but as I progressed, the user interface and feature seem to lackluster. Which is why I started a new version, but ultimately my parent decided to retire and sold the restaurant in July. I manage to finish updating the basic features, and now both applications are now demo applications.',
+      'While the mobile application I developed for the restaurant attracted decent traffic, a web app was necessary to improve accessibility through Google searches. I spent several months building my first full-stack web app using React and NodeJS. However, customer feedback highlighted that the initial version had messy, hard-to-maintain code. I replaced it with Taipei Cuisine V1, which used Typescript for cleaner, more maintainable code. Although version one worked well, I continued refining the user interface and features in a new version. Unfortunately, my parents sold the restaurant in July. Still, I managed to update the basic features for both the mobile and web apps, which now serve as demos showcasing my coding skills.',
     alignment: 'left',
   },
   {
     date: 'Jan 2023',
     title: 'Build my personal portfolio',
     content:
-      "I had created a personal portfolio site before by following a tutorial. As I look back at the portfolio, it doesn't represent and show my capability, which is why I decide to put in more effort to update my portfolio. The application is made up of NextJS and Tailwind, the reasoning behind Tailwind is to make the coding process faster and but more importantly learn the framework.",
+      "While I had created a personal portfolio site before by following a tutorial, I wasn't satisfied with how it represented my skills. So, I decided to put in some extra effort to update and improve it. For the new version, I chose to use NextJS and Tailwind. Tailwind was a great choice because it allowed me to code faster and more efficiently, while also giving me the chance to learn and experiment with the framework. With these tools at my disposal, I was able to create a much more polished and effective portfolio site that truly showcases my abilities.",
     alignment: 'right',
   },
   {
     date: 'In the future',
     title: 'Continue to Code',
     content:
-      'Coding had become part of me. Bumping into errors and bugs can be frustrating from time to time, but fixing the problems one by one gives me a sense of accomplishment. I will continue to learn and create better applications in the future.',
+      'Coding has become an essential part of who I am. While encountering errors and bugs can be frustrating at times, I find that tackling each problem one by one and eventually overcoming them brings me a great sense of satisfaction and accomplishment. Moving forward, I am committed to continuing my learning journey and striving to create even better applications in the future.',
     alignment: 'left',
   },
 ];

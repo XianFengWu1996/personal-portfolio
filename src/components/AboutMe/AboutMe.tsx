@@ -1,4 +1,5 @@
 import { useObserver } from '@/hooks/useIntersectionObserver';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useState } from 'react';
 import { IoArrowBack } from 'react-icons/io5';
 import Dialog from '../Dialog';
@@ -127,9 +128,11 @@ const AboutMe = () => {
     setOpen(false);
   };
 
+  const mobile = useMediaQuery('(max-width: 640px)');
+
   return (
     <section id="aboutme" className="min-h-full overflow-x-clip mb-20">
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} fullScreen={mobile}>
         <div className="px-8 py-5">
           <IoArrowBack
             size={50}
